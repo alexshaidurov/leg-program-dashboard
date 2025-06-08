@@ -1,0 +1,3524 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Программа "Ноги - 12 Недель" - Полный Протокол</title>
+    <style>
+        :root {
+            --primary: #5D5FEF;
+            --secondary: #10B981;
+            --accent: #EC4899;
+            --warning: #F59E0B;
+            --danger: #EF4444;
+            --text: #374151;
+            --bg: #F9FAFB;
+            --panel-bg: #FFFFFF;
+            --border: #E5E7EB;
+        }
+
+        .dark-mode {
+            --primary: #818CF8;
+            --secondary: #34D399;
+            --accent: #F472B6;
+            --warning: #FBBF24;
+            --danger: #F87171;
+            --text: #E5E7EB;
+            --bg: #1F2937;
+            --panel-bg: #111827;
+            --border: #4B5563;
+        }
+        
+        * {
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.5;
+            color: var(--text);
+            margin: 0;
+            padding: 10px;
+            background-color: var(--bg);
+            -webkit-text-size-adjust: 100%;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        
+        h1, h2, h3 {
+            margin: 0;
+            color: var(--primary);
+        }
+        
+        h1 {
+            text-align: center;
+            padding: 15px 0;
+            font-size: 1.5rem;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .container {
+            max-width: 100%;
+            margin: 0 auto;
+        }
+        
+        .panel {
+            background: var(--panel-bg);
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            border: 1px solid var(--border);
+            transition: background-color 0.3s, border-color 0.3s;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 8px;
+            font-size: 14px;
+            text-align: center;
+            cursor: pointer;
+            margin: 5px;
+            width: calc(50% - 10px);
+            -webkit-appearance: none;
+            transition: background-color 0.3s;
+        }
+        
+        .btn-small {
+            padding: 8px 12px;
+            font-size: 13px;
+            width: auto;
+        }
+        
+        .btn-block {
+            display: block;
+            width: 100%;
+            margin: 10px 0;
+        }
+        
+        .btn-success {
+            background: var(--secondary);
+        }
+        
+        .btn-warning {
+            background: var(--warning);
+            color: var(--text);
+        }
+        
+        .btn-danger {
+            background: var(--danger);
+        }
+        
+        .btn-primary {
+            background: var(--primary);
+        }
+        
+        .date-navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+        }
+        
+        .date-input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            font-size: 14px;
+            -webkit-appearance: none;
+            background: var(--panel-bg);
+            color: var(--text);
+            margin: 0 10px;
+        }
+        
+        .exercise {
+            background: rgba(93, 95, 239, 0.05);
+            border-radius: 8px;
+            padding: 12px;
+            margin-bottom: 12px;
+            border-left: 3px solid var(--primary);
+        }
+        
+        .set {
+            display: flex;
+            align-items: center;
+            margin-bottom: 8px;
+            padding: 8px;
+            background: var(--panel-bg);
+            border-radius: 6px;
+            border: 1px solid var(--border);
+        }
+        
+        .set-number {
+            min-width: 70px;
+            font-size: 14px;
+        }
+        
+        .input-small {
+            width: 60px;
+            padding: 8px;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            font-size: 14px;
+            margin: 0 5px;
+            -webkit-appearance: none;
+            background: var(--panel-bg);
+            color: var(--text);
+        }
+        
+        .supplement-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            margin-bottom: 8px;
+            background: var(--panel-bg);
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            transition: opacity 0.3s;
+        }
+        
+        .supplement-item.taken {
+            opacity: 0.6;
+        }
+        
+        .supplement-info {
+            flex-grow: 1;
+        }
+        
+        .supplement-note {
+            font-size: 12px;
+            color: var(--text);
+            opacity: 0.7;
+            margin-top: 4px;
+        }
+        
+        .time-badge {
+            background: var(--primary);
+            color: white;
+            padding: 3px 8px;
+            border-radius: 20px;
+            font-size: 12px;
+            min-width: 40px;
+            text-align: center;
+            display: inline-block;
+        }
+        
+        .checkbox-container {
+            display: inline-block;
+            position: relative;
+            width: 20px;
+            height: 20px;
+            margin-left: 10px;
+        }
+        
+        .checkbox-container input {
+            position: absolute;
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        
+        .checkmark {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 20px;
+            width: 20px;
+            background: var(--panel-bg);
+            border: 2px solid var(--primary);
+            border-radius: 4px;
+        }
+        
+        .checkbox-container input:checked ~ .checkmark {
+            background: var(--secondary);
+            border-color: var(--secondary);
+        }
+        
+        .checkmark:after {
+            content: "";
+            position: absolute;
+            display: none;
+            left: 6px;
+            top: 2px;
+            width: 5px;
+            height: 10px;
+            border: solid white;
+            border-width: 0 2px 2px 0;
+            transform: rotate(45deg);
+        }
+        
+        .checkbox-container input:checked ~ .checkmark:after {
+            display: block;
+        }
+        
+        .tabs {
+            display: flex;
+            overflow-x: auto;
+            white-space: nowrap;
+            margin-bottom: 15px;
+            -webkit-overflow-scrolling: touch;
+        }
+        
+        .tab {
+            padding: 10px 15px;
+            background: var(--border);
+            border-radius: 8px;
+            margin-right: 8px;
+            font-size: 14px;
+            flex-shrink: 0;
+            cursor: pointer;
+        }
+        
+        .tab.active {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .measurement-field {
+            margin-bottom: 12px;
+        }
+        
+        .measurement-field label {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 14px;
+        }
+        
+        .measurement-field input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            font-size: 14px;
+            background: var(--panel-bg);
+            color: var(--text);
+        }
+        
+        .history-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+        }
+        
+        .history-table th, .history-table td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .history-table th {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .empty-state {
+            text-align: center;
+            padding: 20px;
+            color: var(--text);
+            opacity: 0.7;
+        }
+        
+        .supplement-type {
+            width: 8px;
+            height: 30px;
+            border-radius: 4px;
+            margin-right: 10px;
+            flex-shrink: 0;
+        }
+        
+        .type-pharma { background: var(--danger); }
+        .type-injection { background: var(--accent); }
+        .type-supplement { background: var(--secondary); }
+        .type-protein { background: var(--primary); }
+        .type-pump { background: var(--warning); }
+        .type-vitamin { background: #3B82F6; }
+        .type-mineral { background: #06B6D4; }
+        .type-liver { background: #8B5CF6; }
+        .type-sleep { background: #A855F7; }
+        .type-carb { background: #F97316; }
+        .type-joint { background: #10B981; }
+        .type-amino { background: #84CC16; }
+        .type-health { background: #06B6D4; }
+        
+        .photo-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        
+        .photo-item {
+            position: relative;
+            width: calc(50% - 5px);
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+        }
+        
+        .photo-item img {
+            width: 100%;
+            height: 120px;
+            object-fit: cover;
+        }
+        
+        .photo-date {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0,0,0,0.7);
+            color: white;
+            padding: 5px;
+            font-size: 12px;
+            text-align: center;
+        }
+        
+        .photo-upload {
+            display: none;
+        }
+        
+        .photo-source-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        
+        .photo-source-btn {
+            flex: 1;
+            padding: 8px;
+            border-radius: 8px;
+            background: var(--panel-bg);
+            border: 1px solid var(--border);
+            text-align: center;
+            cursor: pointer;
+        }
+        
+        .theme-switcher {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--primary);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            cursor: pointer;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            border: none;
+        }
+        
+        .reminder-danger {
+            background-color: rgba(239, 68, 68, 0.1);
+            border-left: 3px solid var(--danger);
+        }
+        
+        .reminder-warning {
+            background-color: rgba(245, 158, 11, 0.1);
+            border-left: 3px solid var(--warning);
+        }
+        
+        .reminder-info {
+            background-color: rgba(59, 130, 246, 0.1);
+            border-left: 3px solid #3B82F6;
+        }
+        
+        .hide-taken-toggle {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+        
+        .hide-taken-toggle input {
+            margin-right: 8px;
+        }
+        
+        .program-info {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .program-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .stat-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 10px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        
+        .stat-value {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        
+        .nutrition-info {
+            background: var(--panel-bg);
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-left: 4px solid var(--secondary);
+        }
+        
+        .calories-breakdown {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-top: 10px;
+        }
+        
+        .macro-item {
+            text-align: center;
+            padding: 10px;
+            background: rgba(93, 95, 239, 0.05);
+            border-radius: 6px;
+        }
+        
+        /* Стили для трекера здоровья */
+        .slider {
+            width: 100%;
+            height: 25px;
+            border-radius: 5px;
+            background: var(--border);
+            outline: none;
+            -webkit-appearance: none;
+            margin: 10px 0;
+        }
+        
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            background: var(--primary);
+            cursor: pointer;
+        }
+        
+        .slider::-moz-range-thumb {
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            background: var(--primary);
+            cursor: pointer;
+            border: none;
+        }
+        
+        .side-effect-note {
+            font-size: 12px;
+            color: var(--text);
+            opacity: 0.7;
+            margin-top: 5px;
+        }
+        
+        .measurement-field span {
+            display: inline-block;
+            width: 30px;
+            text-align: center;
+            font-weight: bold;
+            color: var(--primary);
+        }
+        
+        .measurement-field textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            font-size: 14px;
+            background: var(--panel-bg);
+            color: var(--text);
+            resize: vertical;
+            font-family: inherit;
+        }
+        
+        /* Стили для анализов крови */
+        .bloodwork-schedule {
+            margin-bottom: 20px;
+        }
+        
+        .schedule-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px;
+            margin-bottom: 8px;
+            background: var(--panel-bg);
+            border-radius: 8px;
+            border: 1px solid var(--border);
+        }
+        
+        .schedule-date {
+            font-weight: bold;
+            color: var(--text);
+        }
+        
+        .schedule-status {
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        
+        .schedule-status.completed {
+            background: var(--secondary);
+            color: white;
+        }
+        
+        .schedule-status.pending {
+            background: var(--warning);
+            color: var(--text);
+        }
+        
+        .schedule-status.overdue {
+            background: var(--danger);
+            color: white;
+        }
+        
+        .bloodwork-markers {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin: 15px 0;
+        }
+        
+        .marker-category {
+            background: rgba(93, 95, 239, 0.05);
+            border-radius: 8px;
+            padding: 15px;
+            border-left: 3px solid var(--primary);
+        }
+        
+        .marker-category h4 {
+            margin: 0 0 10px 0;
+            color: var(--primary);
+        }
+        
+        .markers {
+            font-size: 13px;
+            line-height: 1.4;
+            color: var(--text);
+        }
+        
+        .bloodwork-results {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 15px 0;
+        }
+        
+        .result-group {
+            background: var(--panel-bg);
+            border-radius: 8px;
+            padding: 15px;
+            border: 1px solid var(--border);
+        }
+        
+        .result-group h4 {
+            margin: 0 0 10px 0;
+            color: var(--primary);
+        }
+        
+        .result-inputs {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        
+        .result-inputs input {
+            padding: 8px;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            font-size: 14px;
+            background: var(--panel-bg);
+            color: var(--text);
+        }
+        
+        .health-alert {
+            padding: 10px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        
+        .health-alert.danger {
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid var(--danger);
+            color: var(--danger);
+        }
+        
+        .health-alert.warning {
+            background: rgba(245, 158, 11, 0.1);
+            border: 1px solid var(--warning);
+            color: var(--warning);
+        }
+        
+        .health-trend {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 12px;
+            margin-bottom: 8px;
+            background: var(--panel-bg);
+            border-radius: 6px;
+            border: 1px solid var(--border);
+        }
+        
+        .trend-arrow {
+            font-size: 18px;
+        }
+        
+        .trend-up {
+            color: var(--danger);
+        }
+        
+        .trend-down {
+            color: var(--secondary);
+        }
+        
+        .trend-stable {
+            color: var(--text);
+            opacity: 0.7;
+        }
+        
+        /* Стили для ПКТ */
+        .pct-timeline {
+            margin-bottom: 30px;
+        }
+        
+        .pct-phase {
+            margin-bottom: 20px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .phase-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--primary);
+            color: white;
+            padding: 15px;
+        }
+        
+        .phase-header h4 {
+            margin: 0;
+            color: white;
+        }
+        
+        .phase-dates {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+        
+        .phase-content {
+            padding: 15px;
+            background: var(--panel-bg);
+        }
+        
+        .pct-drug {
+            margin-bottom: 15px;
+            padding: 10px;
+            background: rgba(93, 95, 239, 0.05);
+            border-radius: 6px;
+            border-left: 3px solid var(--secondary);
+        }
+        
+        .monitoring-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .monitoring-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            padding: 15px;
+            background: var(--panel-bg);
+            border-radius: 8px;
+            border: 1px solid var(--border);
+        }
+        
+        .monitoring-icon {
+            font-size: 24px;
+            min-width: 30px;
+        }
+        
+        .support-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 15px 0;
+        }
+        
+        .support-item {
+            background: var(--panel-bg);
+            border-radius: 8px;
+            padding: 15px;
+            border: 1px solid var(--border);
+            text-align: center;
+        }
+        
+        .support-item h4 {
+            margin: 0 0 10px 0;
+            color: var(--primary);
+        }
+        
+        .pct-daily {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin: 15px 0;
+        }
+        
+        /* Стили для аналитики */
+        .analytics-summary {
+            margin-bottom: 30px;
+        }
+        
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 15px;
+            margin: 15px 0;
+        }
+        
+        .summary-item {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+        }
+        
+        .summary-value {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .summary-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        
+        .chart-container {
+            margin-bottom: 30px;
+            background: var(--panel-bg);
+            border-radius: 8px;
+            padding: 20px;
+            border: 1px solid var(--border);
+        }
+        
+        .chart {
+            height: 200px;
+            background: var(--bg);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text);
+            opacity: 0.7;
+            font-style: italic;
+        }
+        
+        .correlation-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 15px 0;
+        }
+        
+        .correlation-item {
+            background: var(--panel-bg);
+            border-radius: 8px;
+            padding: 20px;
+            border: 1px solid var(--border);
+            text-align: center;
+        }
+        
+        .correlation-item h4 {
+            margin: 0 0 10px 0;
+            color: var(--primary);
+        }
+        
+        .correlation-value {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--secondary);
+        }
+        
+        /* Стили для инструментов */
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .tool-section {
+            background: var(--panel-bg);
+            border-radius: 8px;
+            padding: 20px;
+            border: 1px solid var(--border);
+        }
+        
+        .tool-section h3 {
+            margin: 0 0 15px 0;
+            color: var(--primary);
+            border-bottom: 2px solid var(--border);
+            padding-bottom: 10px;
+        }
+        
+        .calc-inputs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .calc-inputs input {
+            flex: 1;
+            min-width: 100px;
+            padding: 10px;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            background: var(--panel-bg);
+            color: var(--text);
+        }
+        
+        .calc-result {
+            background: rgba(93, 95, 239, 0.05);
+            border-radius: 6px;
+            padding: 15px;
+            border-left: 3px solid var(--primary);
+        }
+        
+        .calc-result div {
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        
+        .volume-summary {
+            background: var(--bg);
+            border-radius: 6px;
+            padding: 15px;
+            text-align: center;
+            font-style: italic;
+            color: var(--text);
+            opacity: 0.8;
+        }
+        
+        .rpe-description {
+            text-align: center;
+            font-weight: bold;
+            color: var(--primary);
+            margin-top: 10px;
+        }
+        
+        .dosage-calc select, .dosage-calc input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            background: var(--panel-bg);
+            color: var(--text);
+        }
+        
+        .export-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .notification-settings {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .notification-settings label {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px;
+            background: var(--bg);
+            border-radius: 6px;
+            cursor: pointer;
+        }
+        
+        .notification-settings input[type="checkbox"] {
+            transform: scale(1.2);
+        }
+        
+        /* Анимации */
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(239, 68, 68, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
+        }
+        
+        /* Дополнительные стили для мобильных устройств */
+        @media (max-width: 480px) {
+            .tabs {
+                font-size: 12px;
+            }
+            
+            .tab {
+                padding: 8px 10px;
+                margin-right: 5px;
+            }
+            
+            .summary-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            .summary-value {
+                font-size: 1.5rem;
+            }
+            
+            .monitoring-item {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .calc-inputs {
+                flex-direction: column;
+                gap: 8px;
+            }
+        }
+        
+        @media (min-width: 768px) {
+            .container {
+                max-width: 600px;
+            }
+            
+            .btn {
+                width: auto;
+            }
+            
+            .photo-item {
+                width: calc(33.333% - 7px);
+            }
+            
+            .program-stats {
+                grid-template-columns: repeat(4, 1fr);
+            }
+            
+            .calories-breakdown {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+        
+        /* Адаптивность для планшетов */
+        @media (max-width: 768px) {
+            .tools-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .summary-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .calc-inputs {
+                flex-direction: column;
+            }
+            
+            .phase-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔥 Программа Специализации на Ноги - 12 Недель 💪</h1>
+        
+        <div class="program-info">
+            <h2>Полный Протокол</h2>
+            <p>Мужчина, 49 лет, 102.2 кг, 180 см</p>
+            <div class="program-stats">
+                <div class="stat-item">
+                    <div class="stat-value" id="weeks-passed">1</div>
+                    <div class="stat-label">Неделя</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value" id="days-passed">1</div>
+                    <div class="stat-label">День</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">84</div>
+                    <div class="stat-label">Дней всего</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">12</div>
+                    <div class="stat-label">Недель</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="tabs">
+            <div class="tab active" data-tab="workout">Тренировки</div>
+            <div class="tab" data-tab="supplements">Фарма/Добавки</div>
+            <div class="tab" data-tab="nutrition">Питание</div>
+            <div class="tab" data-tab="health">Здоровье</div>
+            <div class="tab" data-tab="bloodwork">Анализы</div>
+            <div class="tab" data-tab="pct">ПКТ</div>
+            <div class="tab" data-tab="analytics">Аналитика</div>
+            <div class="tab" data-tab="measurements">Замеры</div>
+            <div class="tab" data-tab="photos">Фото</div>
+            <div class="tab" data-tab="tools">Инструменты</div>
+        </div>
+        
+        <div class="panel">
+            <div class="date-navigation">
+                <button id="prev-day" class="btn btn-small">← Назад</button>
+                <input type="date" id="current-date" class="date-input" min="2025-06-09" max="2025-08-31" value="2025-06-09">
+                <button id="next-day" class="btn btn-small">Вперед →</button>
+            </div>
+        </div>
+        
+        <div id="reminders-container"></div>
+        
+        <!-- Вкладка Тренировки -->
+        <div class="tab-content active" id="workout-tab">
+            <div class="panel">
+                <h2 id="workout-type">Понедельник - Ноги (Тяжелая)</h2>
+                <div id="workout-exercises"></div>
+                <button id="save-workout" class="btn btn-success btn-block">Сохранить тренировку</button>
+            </div>
+        </div>
+        
+        <!-- Вкладка Фарма/Добавки -->
+        <div class="tab-content" id="supplements-tab">
+            <div class="panel">
+                <div class="hide-taken-toggle">
+                    <input type="checkbox" id="hide-taken-checkbox">
+                    <label for="hide-taken-checkbox">Скрыть принятые добавки</label>
+                </div>
+                <div id="supplements-list"></div>
+                <button id="mark-all-taken" class="btn btn-success btn-block">Отметить все как принятые</button>
+            </div>
+        </div>
+        
+        <!-- Вкладка Питание -->
+        <div class="tab-content" id="nutrition-tab">
+            <div class="nutrition-info" id="nutrition-info">
+                <h3>План питания на сегодня</h3>
+                <div class="calories-breakdown" id="calories-breakdown">
+                    <!-- Будет заполнено JS -->
+                </div>
+            </div>
+            <div class="panel" id="meal-plan">
+                <!-- Будет заполнено JS -->
+            </div>
+        </div>
+        
+        <!-- Вкладка Здоровье -->
+        <div class="tab-content" id="health-tab">
+            <div class="panel">
+                <h2>⚠️ Мониторинг побочных эффектов</h2>
+                <p style="color: var(--danger); font-weight: bold;">Особенно важно при использовании тренболона!</p>
+                
+                <div id="side-effects-form">
+                    <div class="measurement-field">
+                        <label for="sleep-quality">😴 Качество сна (1-10):</label>
+                        <input type="range" id="sleep-quality" min="1" max="10" value="5" class="slider">
+                        <span id="sleep-value">5</span>
+                        <div class="side-effect-note">1 - бессонница, 10 - отличный сон</div>
+                    </div>
+                    
+                    <div class="measurement-field">
+                        <label for="night-sweats">💦 Ночная потливость (1-10):</label>
+                        <input type="range" id="night-sweats" min="1" max="10" value="1" class="slider">
+                        <span id="sweats-value">1</span>
+                        <div class="side-effect-note">1 - нет потливости, 10 - сильная потливость</div>
+                    </div>
+                    
+                    <div class="measurement-field">
+                        <label for="aggression">😤 Агрессивность/раздражительность (1-10):</label>
+                        <input type="range" id="aggression" min="1" max="10" value="1" class="slider">
+                        <span id="aggression-value">1</span>
+                        <div class="side-effect-note">1 - спокойствие, 10 - сильная агрессия</div>
+                    </div>
+                    
+                    <div class="measurement-field">
+                        <label for="shortness-breath">🫁 Одышка при нагрузке (1-10):</label>
+                        <input type="range" id="shortness-breath" min="1" max="10" value="1" class="slider">
+                        <span id="breath-value">1</span>
+                        <div class="side-effect-note">1 - нормальное дыхание, 10 - сильная одышка</div>
+                    </div>
+                    
+                    <div class="measurement-field">
+                        <label for="heartburn">🔥 Изжога/проблемы ЖКТ (1-10):</label>
+                        <input type="range" id="heartburn" min="1" max="10" value="1" class="slider">
+                        <span id="heartburn-value">1</span>
+                        <div class="side-effect-note">1 - нет проблем, 10 - сильная изжога</div>
+                    </div>
+                    
+                    <div class="measurement-field">
+                        <label for="libido">❤️ Либидо (1-10):</label>
+                        <input type="range" id="libido" min="1" max="10" value="5" class="slider">
+                        <span id="libido-value">5</span>
+                        <div class="side-effect-note">1 - очень низкое, 10 - очень высокое</div>
+                    </div>
+                    
+                    <div class="measurement-field">
+                        <label for="blood-pressure-sys">🩺 Артериальное давление (систолическое):</label>
+                        <input type="number" id="blood-pressure-sys" min="80" max="200" placeholder="120">
+                    </div>
+                    
+                    <div class="measurement-field">
+                        <label for="blood-pressure-dia">🩺 Артериальное давление (диастолическое):</label>
+                        <input type="number" id="blood-pressure-dia" min="50" max="120" placeholder="80">
+                    </div>
+                    
+                    <div class="measurement-field">
+                        <label for="resting-hr">❤️ ЧСС покоя (уд/мин):</label>
+                        <input type="number" id="resting-hr" min="40" max="120" placeholder="65">
+                    </div>
+                    
+                    <div class="measurement-field">
+                        <label for="daily-notes">📝 Дополнительные заметки:</label>
+                        <textarea id="daily-notes" rows="3" placeholder="Самочувствие, настроение, другие наблюдения..."></textarea>
+                    </div>
+                </div>
+                
+                <button id="save-health-data" class="btn btn-success btn-block">Сохранить данные о здоровье</button>
+                
+                <div id="health-alerts" style="margin-top: 20px;"></div>
+                
+                <h3 style="margin-top: 30px;">📊 Тренды за последние 7 дней</h3>
+                <div id="health-trends"></div>
+            </div>
+        </div>
+        
+        <!-- Вкладка Анализы -->
+        <div class="tab-content" id="bloodwork-tab">
+            <div class="panel">
+                <h2>🩺 Планировщик анализов крови</h2>
+                
+                <div class="bloodwork-schedule">
+                    <h3>📅 График обязательных анализов:</h3>
+                    <div class="schedule-item">
+                        <div class="schedule-date">До начала курса (07.06.2025)</div>
+                        <div class="schedule-status completed">✅ Базовые анализы</div>
+                    </div>
+                    <div class="schedule-item">
+                        <div class="schedule-date">4 неделя (05.07.2025)</div>
+                        <div class="schedule-status pending">⏳ Контрольные анализы</div>
+                    </div>
+                    <div class="schedule-item">
+                        <div class="schedule-date">8 неделя (02.08.2025)</div>
+                        <div class="schedule-status pending">⏳ Промежуточные анализы</div>
+                    </div>
+                    <div class="schedule-item">
+                        <div class="schedule-date">12 неделя (30.08.2025)</div>
+                        <div class="schedule-status pending">⏳ Финальные анализы</div>
+                    </div>
+                    <div class="schedule-item">
+                        <div class="schedule-date">ПКТ (27.09.2025)</div>
+                        <div class="schedule-status pending">⏳ Анализы перед ПКТ</div>
+                    </div>
+                </div>
+                
+                <h3>🧪 Обязательные показатели:</h3>
+                <div class="bloodwork-markers">
+                    <div class="marker-category">
+                        <h4>🟢 Печень:</h4>
+                        <div class="markers">АЛТ, АСТ, Билирубин общий, ГГТ, ЩФ</div>
+                    </div>
+                    <div class="marker-category">
+                        <h4>🔴 Липидный профиль:</h4>
+                        <div class="markers">Холестерин общий, ЛПВП, ЛПНП, Триглицериды</div>
+                    </div>
+                    <div class="marker-category">
+                        <h4>🟡 Гормоны:</h4>
+                        <div class="markers">Тестостерон общий/свободный, Эстрадиол, ЛГ, ФСГ, ГСПГ</div>
+                    </div>
+                    <div class="marker-category">
+                        <h4>🟣 Общий анализ крови:</h4>
+                        <div class="markers">Гемоглобин, Гематокрит, Эритроциты, Тромбоциты, Лейкоциты</div>
+                    </div>
+                    <div class="marker-category">
+                        <h4>🔵 Почки:</h4>
+                        <div class="markers">Креатинин, Мочевина, СКФ</div>
+                    </div>
+                    <div class="marker-category">
+                        <h4>⚪ Дополнительно:</h4>
+                        <div class="markers">Глюкоза, HbA1c, ТТГ, ПСА (для мужчин 40+)</div>
+                    </div>
+                </div>
+                
+                <div id="bloodwork-input" style="margin-top: 20px;">
+                    <h3>📝 Ввод результатов анализов:</h3>
+                    <input type="date" id="bloodwork-date" class="date-input">
+                    
+                    <div class="bloodwork-results">
+                        <div class="result-group">
+                            <h4>Печень:</h4>
+                            <div class="result-inputs">
+                                <input type="number" placeholder="АЛТ" id="alt" step="0.1">
+                                <input type="number" placeholder="АСТ" id="ast" step="0.1">
+                                <input type="number" placeholder="Билирубин" id="bilirubin" step="0.1">
+                            </div>
+                        </div>
+                        
+                        <div class="result-group">
+                            <h4>Гормоны:</h4>
+                            <div class="result-inputs">
+                                <input type="number" placeholder="Тестостерон" id="testosterone" step="0.1">
+                                <input type="number" placeholder="Эстрадиол" id="estradiol" step="0.1">
+                                <input type="number" placeholder="ЛГ" id="lh" step="0.1">
+                            </div>
+                        </div>
+                        
+                        <div class="result-group">
+                            <h4>Липиды:</h4>
+                            <div class="result-inputs">
+                                <input type="number" placeholder="Холестерин" id="cholesterol" step="0.1">
+                                <input type="number" placeholder="ЛПВП" id="hdl" step="0.1">
+                                <input type="number" placeholder="ЛПНП" id="ldl" step="0.1">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <button id="save-bloodwork" class="btn btn-success btn-block">Сохранить результаты анализов</button>
+                </div>
+                
+                <h3 style="margin-top: 30px;">📈 История анализов</h3>
+                <div id="bloodwork-history"></div>
+            </div>
+        </div>
+        
+        <!-- Вкладка ПКТ -->
+        <div class="tab-content" id="pct-tab">
+            <div class="panel">
+                <h2>💊 Планировщик послекурсовой терапии (ПКТ)</h2>
+                
+                <div class="pct-timeline">
+                    <h3>📅 График ПКТ:</h3>
+                    <div class="pct-phase">
+                        <div class="phase-header">
+                            <h4>🕐 Подготовка (за 2 недели до ПКТ)</h4>
+                            <span class="phase-dates">16.08.2025 - 30.08.2025</span>
+                        </div>
+                        <div class="phase-content">
+                            <div class="pct-drug">
+                                <strong>ХГЧ (хорионический гонадотропин):</strong><br>
+                                💉 500 ЕД через день внутримышечно<br>
+                                📍 Цель: подготовка яичек к восстановлению
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="pct-phase">
+                        <div class="phase-header">
+                            <h4>💊 ПКТ Фаза 1 (4 недели)</h4>
+                            <span class="phase-dates">31.08.2025 - 28.09.2025</span>
+                        </div>
+                        <div class="phase-content">
+                            <div class="pct-drug">
+                                <strong>Кломид (кломифена цитрат):</strong><br>
+                                💊 50мг в день утром<br>
+                                📍 Стимуляция ЛГ/ФСГ
+                            </div>
+                            <div class="pct-drug">
+                                <strong>Тамоксифен:</strong><br>
+                                💊 20мг в день вечером<br>
+                                📍 Блокировка эстрогенных рецепторов
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="pct-phase">
+                        <div class="phase-header">
+                            <h4>💊 ПКТ Фаза 2 (2 недели)</h4>
+                            <span class="phase-dates">29.09.2025 - 12.10.2025</span>
+                        </div>
+                        <div class="phase-content">
+                            <div class="pct-drug">
+                                <strong>Кломид:</strong><br>
+                                💊 25мг в день<br>
+                                📍 Поддерживающая доза
+                            </div>
+                            <div class="pct-drug">
+                                <strong>Тамоксифен:</strong><br>
+                                💊 20мг в день<br>
+                                📍 Продолжение терапии
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="pct-monitoring">
+                    <h3>🩺 Мониторинг во время ПКТ:</h3>
+                    <div class="monitoring-list">
+                        <div class="monitoring-item">
+                            <span class="monitoring-icon">📊</span>
+                            <div>
+                                <strong>Анализы крови (каждые 2 недели):</strong><br>
+                                Тестостерон общий/свободный, ЛГ, ФСГ, Эстрадиол, Печеночные показатели
+                            </div>
+                        </div>
+                        <div class="monitoring-item">
+                            <span class="monitoring-icon">😴</span>
+                            <div>
+                                <strong>Самочувствие:</strong><br>
+                                Либидо, настроение, энергия, сон, мотивация
+                            </div>
+                        </div>
+                        <div class="monitoring-item">
+                            <span class="monitoring-icon">💪</span>
+                            <div>
+                                <strong>Физические показатели:</strong><br>
+                                Вес, сила, объемы (ожидаемая потеря 5-10%)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="pct-support">
+                    <h3>🛡️ Поддерживающие препараты:</h3>
+                    <div class="support-grid">
+                        <div class="support-item">
+                            <h4>Печень:</h4>
+                            <div>TUDCA 1000мг/день<br>NAC 600мг/день</div>
+                        </div>
+                        <div class="support-item">
+                            <h4>Настроение:</h4>
+                            <div>5-HTP 100мг<br>Витамин D 4000 МЕ</div>
+                        </div>
+                        <div class="support-item">
+                            <h4>Либидо:</h4>
+                            <div>Цинк 15мг<br>Магний 400мг</div>
+                        </div>
+                        <div class="support-item">
+                            <h4>Сон:</h4>
+                            <div>Мелатонин 5мг<br>Глицин 2г</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="pct-tracker">
+                    <h3>📝 Трекер ПКТ (заполнять ежедневно):</h3>
+                    <div class="pct-daily">
+                        <div class="measurement-field">
+                            <label>💊 Кломид принят:</label>
+                            <input type="checkbox" id="pct-clomid">
+                        </div>
+                        <div class="measurement-field">
+                            <label>💊 Тамоксифен принят:</label>
+                            <input type="checkbox" id="pct-tamoxifen">
+                        </div>
+                        <div class="measurement-field">
+                            <label>😴 Качество сна (1-10):</label>
+                            <input type="range" id="pct-sleep" min="1" max="10" value="5">
+                            <span id="pct-sleep-value">5</span>
+                        </div>
+                        <div class="measurement-field">
+                            <label>⚡ Уровень энергии (1-10):</label>
+                            <input type="range" id="pct-energy" min="1" max="10" value="5">
+                            <span id="pct-energy-value">5</span>
+                        </div>
+                        <div class="measurement-field">
+                            <label>❤️ Либидо (1-10):</label>
+                            <input type="range" id="pct-libido" min="1" max="10" value="5">
+                            <span id="pct-libido-value">5</span>
+                        </div>
+                    </div>
+                    <button id="save-pct-data" class="btn btn-success btn-block">Сохранить данные ПКТ</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Вкладка Аналитика -->
+        <div class="tab-content" id="analytics-tab">
+            <div class="panel">
+                <h2>📊 Аналитика прогресса</h2>
+                
+                <div class="analytics-summary">
+                    <h3>🎯 Сводка программы:</h3>
+                    <div class="summary-grid">
+                        <div class="summary-item">
+                            <div class="summary-value" id="total-workouts">0</div>
+                            <div class="summary-label">Тренировок</div>
+                        </div>
+                        <div class="summary-item">
+                            <div class="summary-value" id="total-volume">0</div>
+                            <div class="summary-label">Объем (кг)</div>
+                        </div>
+                        <div class="summary-item">
+                            <div class="summary-value" id="avg-sleep">0</div>
+                            <div class="summary-label">Сон (ср.)</div>
+                        </div>
+                        <div class="summary-item">
+                            <div class="summary-value" id="weight-change">0</div>
+                            <div class="summary-label">Изм. веса</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="progress-charts">
+                    <h3>📈 Графики прогресса:</h3>
+                    <div class="chart-container">
+                        <h4>💪 Силовые показатели (ключевые упражнения)</h4>
+                        <div id="strength-chart" class="chart">График будет отображен при достаточном количестве данных</div>
+                    </div>
+                    
+                    <div class="chart-container">
+                        <h4>⚖️ Изменение веса тела</h4>
+                        <div id="weight-chart" class="chart">График будет отображен при достаточном количестве данных</div>
+                    </div>
+                    
+                    <div class="chart-container">
+                        <h4>😴 Качество сна и восстановления</h4>
+                        <div id="sleep-chart" class="chart">График будет отображен при достаточном количестве данных</div>
+                    </div>
+                    
+                    <div class="chart-container">
+                        <h4>📏 Объемы (бедро и голень)</h4>
+                        <div id="measurements-chart" class="chart">График будет отображен при достаточном количестве данных</div>
+                    </div>
+                </div>
+                
+                <div class="correlations">
+                    <h3>🔄 Корреляционный анализ:</h3>
+                    <div class="correlation-grid">
+                        <div class="correlation-item">
+                            <h4>Сон → Тренировки</h4>
+                            <div class="correlation-value" id="sleep-workout-corr">-</div>
+                        </div>
+                        <div class="correlation-item">
+                            <h4>Побочки → Прогресс</h4>
+                            <div class="correlation-value" id="sides-progress-corr">-</div>
+                        </div>
+                        <div class="correlation-item">
+                            <h4>Объем → Результат</h4>
+                            <div class="correlation-value" id="volume-result-corr">-</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="weekly-reports">
+                    <h3>📝 Еженедельные отчеты:</h3>
+                    <div id="weekly-report"></div>
+                    <button id="generate-report" class="btn btn-primary btn-block">Сгенерировать отчет за неделю</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Вкладка Замеры -->
+        <div class="tab-content" id="measurements-tab">
+            <div class="panel">
+                <input type="date" id="measurement-date" class="date-input" min="2025-06-09" max="2025-08-31" value="2025-06-09">
+                
+                <div class="measurement-field">
+                    <label for="weight">Вес (кг):</label>
+                    <input type="number" id="weight" min="0" step="0.1">
+                </div>
+                
+                <div class="measurement-field">
+                    <label for="chest">Грудь (см):</label>
+                    <input type="number" id="chest" min="0" step="0.5">
+                </div>
+                
+                <div class="measurement-field">
+                    <label for="waist">Талия (см):</label>
+                    <input type="number" id="waist" min="0" step="0.5">
+                </div>
+                
+                <div class="measurement-field">
+                    <label for="biceps">Бицепс (см):</label>
+                    <input type="number" id="biceps" min="0" step="0.5">
+                </div>
+                
+                <div class="measurement-field">
+                    <label for="thigh">Бедро (см):</label>
+                    <input type="number" id="thigh" min="0" step="0.5">
+                </div>
+                
+                <div class="measurement-field">
+                    <label for="calf">Голень (см):</label>
+                    <input type="number" id="calf" min="0" step="0.5">
+                </div>
+                
+                <button id="save-measurements" class="btn btn-success btn-block">Сохранить замеры</button>
+                
+                <h3 style="margin-top: 20px;">История замеров</h3>
+                <div style="overflow-x: auto;">
+                    <table class="history-table" id="measurements-history">
+                        <thead>
+                            <tr>
+                                <th>Дата</th>
+                                <th>Вес</th>
+                                <th>Бедро</th>
+                                <th>Голень</th>
+                                <th>Талия</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Вкладка Фото -->
+        <div class="tab-content" id="photos-tab">
+            <div class="panel">
+                <h2>Фото прогресса</h2>
+                <p>Фотографии каждые 2 недели: ноги (фронт, профиль, сзади)<br>Общие фото еженедельно</p>
+                
+                <input type="file" id="photo-upload-camera" class="photo-upload" accept="image/*" capture="environment">
+                <input type="file" id="photo-upload-gallery" class="photo-upload" accept="image/*">
+                
+                <div class="photo-source-buttons">
+                    <label for="photo-upload-camera" class="photo-source-btn">
+                        📷 Сделать фото
+                    </label>
+                    <label for="photo-upload-gallery" class="photo-source-btn">
+                        🖼️ Из галереи
+                    </label>
+                </div>
+                
+                <div class="photo-container" id="photos-container">
+                    <!-- Фото будут добавляться сюда -->
+                </div>
+            </div>
+        </div>
+        
+        <!-- Вкладка Инструменты -->
+        <div class="tab-content" id="tools-tab">
+            <div class="panel">
+                <h2>🧮 Калькуляторы и инструменты</h2>
+                
+                <div class="tools-grid">
+                    <div class="tool-section">
+                        <h3>💪 Калькулятор 1ПМ</h3>
+                        <div class="calc-inputs">
+                            <input type="number" id="weight-lifted" placeholder="Вес (кг)" min="0">
+                            <input type="number" id="reps-performed" placeholder="Повторения" min="1" max="15">
+                            <button id="calc-1rm" class="btn btn-primary">Рассчитать</button>
+                        </div>
+                        <div class="calc-result">
+                            <div>Brzycki: <span id="brzycki-result">-</span> кг</div>
+                            <div>Epley: <span id="epley-result">-</span> кг</div>
+                        </div>
+                    </div>
+                    
+                    <div class="tool-section">
+                        <h3>📊 Объем тренировки</h3>
+                        <div class="volume-summary" id="current-volume">
+                            Выберите день тренировки для расчета объема
+                        </div>
+                    </div>
+                    
+                    <div class="tool-section">
+                        <h3>🎯 RPE калькулятор</h3>
+                        <div class="calc-inputs">
+                            <input type="range" id="rpe-scale" min="1" max="10" value="5">
+                            <span id="rpe-value">5</span>
+                        </div>
+                        <div class="rpe-description" id="rpe-desc">Умеренно</div>
+                    </div>
+                    
+                    <div class="tool-section">
+                        <h3>💊 Калькулятор дозировок</h3>
+                        <div class="dosage-calc">
+                            <select id="compound-select">
+                                <option value="test">Тестостерон энантат</option>
+                                <option value="mast">Мастерон энантат</option>
+                                <option value="tren">Тренболон ацетат</option>
+                                <option value="var">Оксандролон</option>
+                            </select>
+                            <input type="number" id="weekly-dose" placeholder="Доза в неделю (мг)">
+                            <div id="dosage-schedule"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="tool-section">
+                        <h3>📤 Экспорт данных</h3>
+                        <div class="export-buttons">
+                            <button id="export-pdf" class="btn btn-success">📄 PDF отчет</button>
+                            <button id="export-csv" class="btn btn-primary">📊 CSV данные</button>
+                            <button id="export-backup" class="btn btn-warning">💾 Полный бэкап</button>
+                        </div>
+                    </div>
+                    
+                    <div class="tool-section">
+                        <h3>🔔 Настройки уведомлений</h3>
+                        <div class="notification-settings">
+                            <label>
+                                <input type="checkbox" id="notify-injections"> 
+                                💉 Напоминания об инъекциях
+                            </label>
+                            <label>
+                                <input type="checkbox" id="notify-bloodwork"> 
+                                🩺 Напоминания об анализах
+                            </label>
+                            <label>
+                                <input type="checkbox" id="notify-sides"> 
+                                ⚠️ Алерты побочных эффектов
+                            </label>
+                            <label>
+                                <input type="checkbox" id="notify-measurements"> 
+                                📏 Напоминания о замерах
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <button id="theme-switcher" class="theme-switcher">🌓</button>
+
+    <script>
+        // Данные тренировок
+        const workoutData = {
+            monday: {
+                name: "НОГИ (ТЯЖЕЛАЯ)",
+                exercises: [
+                    { name: "Жим ногами в тренажере", sets: 6, reps: "12-15", rest: "2-3 мин", note: "Разминка: 100кг × 15" },
+                    { name: "Приседания в тренажере Смита", sets: 4, reps: "10-12", rest: "2-3 мин", note: "До параллели, контроль поясницы" },
+                    { name: "Румынская тяга с гантелями", sets: 4, reps: "12-15", rest: "90 сек", note: "Акцент на бицепс бедра" },
+                    { name: "Разгибания ног сидя", sets: 5, reps: "15-20", rest: "60-90 сек", note: "Пиковое сокращение" },
+                    { name: "Сгибания ног лежа", sets: 5, reps: "12-15", rest: "60-90 сек", note: "Контроль негативной фазы" },
+                    { name: "Подъемы на носки стоя", sets: 6, reps: "15-20", rest: "60 сек", note: "Полная амплитуда" }
+                ]
+            },
+            tuesday: {
+                name: "ГРУДЬ + ТРИЦЕПС",
+                exercises: [
+                    { name: "Жим штанги лежа", sets: 4, reps: "8-10", rest: "2-3 мин", note: "Контроль амплитуды" },
+                    { name: "Жим гантелей под углом 30°", sets: 4, reps: "10-12", rest: "90 сек" },
+                    { name: "Разведения гантелей лежа", sets: 4, reps: "12-15", rest: "60-90 сек" },
+                    { name: "Жим в хаммере сидя", sets: 4, reps: "10-12", rest: "90 сек" },
+                    { name: "Французский жим лежа", sets: 4, reps: "10-12", rest: "90 сек" },
+                    { name: "Разгибания на верхнем блоке", sets: 4, reps: "12-15", rest: "60-90 сек", note: "Последний подход: дроп-сет" }
+                ]
+            },
+            wednesday: { 
+                name: "ОТДЫХ", 
+                exercises: [],
+                activities: ["Легкая прогулка 30-40 минут", "Растяжка 15-20 минут", "Массаж (при возможности)"]
+            },
+            thursday: {
+                name: "НОГИ (ОБЪЕМНАЯ/ПАМПИНГ)",
+                exercises: [
+                    { name: "Жим ногами широкой постановкой", sets: 5, reps: "15-20", rest: "90 сек", note: "Акцент на внутреннюю часть квадрицепса" },
+                    { name: "Выпады в тренажере Смита", sets: 5, reps: "12 каждой ногой", rest: "90 сек" },
+                    { name: "Разгибания ног сидя (пампинг)", sets: 6, reps: "20-25", rest: "45-60 сек", note: "Средние веса, высокий темп" },
+                    { name: "Сгибания ног лежа", sets: 5, reps: "15-20", rest: "60 сек" },
+                    { name: "Подъемы на носки сидя", sets: 5, reps: "20-25", rest: "45 сек" },
+                    { name: "Приседания в гакк-машине", sets: 4, reps: "15-20", rest: "90 сек" }
+                ]
+            },
+            friday: {
+                name: "СПИНА + БИЦЕПС",
+                exercises: [
+                    { name: "Тяга верхнего блока широким хватом", sets: 4, reps: "8-10", rest: "2-3 мин", note: "Разминка: 50кг × 12" },
+                    { name: "Тяга горизонтального блока", sets: 4, reps: "10-12", rest: "90 сек" },
+                    { name: "Тяга гантели в наклоне с опорой", sets: 4, reps: "10-12 каждой рукой", rest: "60 сек" },
+                    { name: "Тяга верхнего блока узким хватом", sets: 4, reps: "10-12", rest: "90 сек" },
+                    { name: "Подъемы штанги на бицепс", sets: 4, reps: "10-12", rest: "90 сек" },
+                    { name: "Молотки с гантелями", sets: 4, reps: "12-15", rest: "60-90 сек", note: "Последний подход: дроп-сет" }
+                ]
+            },
+            saturday: {
+                name: "ПЛЕЧИ + ПРЕСС",
+                exercises: [
+                    { name: "Жим гантелей сидя", sets: 4, reps: "10-12", rest: "90 сек", note: "До уровня ушей! КОНТРОЛЬ ПРАВОГО ПЛЕЧА" },
+                    { name: "Подъемы гантелей перед собой", sets: 4, reps: "12-15", rest: "60 сек" },
+                    { name: "Обратные разведения в тренажере", sets: 4, reps: "15-20", rest: "60 сек" },
+                    { name: "Шраги с гантелями", sets: 4, reps: "12-15", rest: "90 сек" },
+                    { name: "Планка", sets: 4, reps: "30-60 секунд", rest: "60 сек" },
+                    { name: "Скручивания на верхнем блоке", sets: 4, reps: "15-20", rest: "45 сек" }
+                ]
+            },
+            sunday: { 
+                name: "ОТДЫХ", 
+                exercises: [],
+                activities: ["Полный отдых или легкая прогулка", "Растяжка, баня/сауна"]
+            }
+        };
+
+        // Данные добавок (полный список из протокола, отсортированы по времени приема)
+        const supplementData = {
+            everyday: [
+                { time: "7:00", name: "Телпрес (телмисартан)", dose: "80мг", type: "pharma", note: "Ежедневно утром" },
+                { time: "7:00", name: "NAC", dose: "600мг", type: "liver", note: "Натощак, защита печени" },
+                { time: "7:00", name: "Витамин D3", dose: "4000 МЕ", type: "vitamin", note: "С жирной пищей" },
+                { time: "7:00", name: "Поливитамины", dose: "1 таблетка", type: "vitamin", note: "Утром" },
+                { time: "8:00", name: "Омега-3", dose: "3г", type: "health", note: "С едой" },
+                { time: "8:00", name: "Креатин моногидрат", dose: "5г", type: "supplement", note: "Ежедневно (в любое время)" },
+                { time: "12:00", name: "TUDCA", dose: "500мг", type: "liver", note: "Во время еды, защита печени" },
+                { time: "12:00", name: "Глюкозамин", dose: "1500мг", type: "joint", note: "Поддержка суставов" },
+                { time: "12:00", name: "Хондроитин", dose: "1200мг", type: "joint", note: "Поддержка суставов" },
+                { time: "12:00", name: "МСМ", dose: "1000мг", type: "joint", note: "Поддержка суставов" },
+                { time: "14:00", name: "Омега-3", dose: "3г", type: "health", note: "С едой" },
+                { time: "18:00", name: "TUDCA", dose: "500мг", type: "liver", note: "Во время еды, защита печени" },
+                { time: "20:00", name: "Витамин С", dose: "1000мг", type: "vitamin", note: "Общее здоровье" },
+                { time: "21:30", name: "Мелатонин", dose: "5-10мг", type: "sleep", note: "За 30 мин до сна, борьба с тренболоном" },
+                { time: "21:30", name: "L-теанин", dose: "400мг", type: "sleep", note: "С мелатонином, борьба с тренболоном" },
+                { time: "22:00", name: "Магний глицинат", dose: "800мг", type: "mineral", note: "Перед сном, борьба с тренболоном" },
+                { time: "22:00", name: "ГАМК", dose: "500-750мг", type: "sleep", note: "За 30 мин до сна, борьба с тренболоном" },
+                { time: "22:00", name: "Глицин", dose: "1-2г", type: "sleep", note: "Подъязычно перед сном, борьба с тренболоном" },
+                { time: "22:00", name: "Цинк", dose: "15мг", type: "mineral", note: "На ночь" },
+                { time: "22:00", name: "Коллаген", dose: "10г", type: "joint", note: "Поддержка суставов" },
+                { time: "22:30", name: "Казеиновый протеин", dose: "30-40г", type: "protein", note: "Перед сном" }
+            ],
+            workoutDays: [
+                // ГОРМОН РОСТА В ТРЕНИРОВОЧНЫЕ ДНИ
+                { time: "5:00", name: "Гормон роста", dose: "4ЕД", type: "pharma", note: "Натощак в тренировочные дни" },
+                
+                // ПРЕДТРЕНИРОВОЧНЫЙ КОМПЛЕКС (за 30-45 мин до тренировки)
+                { time: "7:00", name: "Оксандролон", dose: "20мг", type: "pharma", note: "Перед залом (тренировочные дни)" },
+                { time: "7:00", name: "Цитруллин малат", dose: "8-10г", type: "pump", note: "За 30-45 мин до тренировки" },
+                { time: "7:00", name: "Аргинин", dose: "5-6г", type: "pump", note: "За 30-45 мин до тренировки" },
+                { time: "7:00", name: "Бета-аланин", dose: "3-4г", type: "pump", note: "За 30-45 мин до тренировки" },
+                { time: "7:00", name: "Кофеин", dose: "200-300мг", type: "pump", note: "За 30-45 мин до тренировки" },
+                { time: "7:00", name: "Таурин", dose: "2-3г", type: "pump", note: "За 30-45 мин до тренировки" },
+                
+                // ВО ВРЕМЯ ТРЕНИРОВКИ
+                { time: "8:00", name: "EAA (во время тренировки)", dose: "10-15г", type: "amino", note: "Во время тренировки + электролиты" },
+                { time: "8:00", name: "Глютамин (во время тренировки)", dose: "10г", type: "amino", note: "Во время тренировки" },
+                { time: "8:00", name: "Электролиты", dose: "Натрий, калий, магний", type: "mineral", note: "Во время тренировки + 500-750мл воды" },
+                
+                // ПОСЛЕ ТРЕНИРОВКИ
+                { time: "9:30", name: "Сывороточный протеин изолят", dose: "40-50г", type: "protein", note: "После тренировки" },
+                { time: "9:30", name: "Мальтодекстрин", dose: "50г", type: "carb", note: "После тренировки" },
+                { time: "9:30", name: "Глютамин (после тренировки)", dose: "10г", type: "amino", note: "После тренировки" },
+                
+                // СХЕМА ПРИЕМА ОКСАНДРОЛОНА В ТРЕНИРОВОЧНЫЕ ДНИ
+                { time: "14:00", name: "Оксандролон", dose: "20мг", type: "pharma", note: "С обедом (тренировочные дни)" },
+                { time: "22:30", name: "Оксандролон", dose: "10мг", type: "pharma", note: "Перед сном (тренировочные дни)" }
+            ],
+            legDays: [
+                // УСИЛЕННЫЙ ПРЕДТРЕНИРОВОЧНЫЙ КОМПЛЕКС ДЛЯ ДНЕЙ НОГ (заменяет базовый)
+                { time: "7:00", name: "Цитруллин малат (усиленный)", dose: "10г", type: "pump", note: "Усиленная версия для дней ног" },
+                { time: "7:00", name: "Аргинин (усиленный)", dose: "6г", type: "pump", note: "Усиленная версия для дней ног" },
+                { time: "7:00", name: "Бета-аланин (усиленный)", dose: "4г", type: "pump", note: "Усиленная версия для дней ног" },
+                { time: "7:00", name: "Кофеин (усиленный)", dose: "300мг", type: "pump", note: "Усиленная версия для дней ног" },
+                { time: "7:00", name: "Таурин (усиленный)", dose: "3г", type: "pump", note: "Усиленная версия для дней ног" },
+                { time: "7:00", name: "Глицерин", dose: "5г", type: "pump", note: "Дополнительный пампинг для дней ног" },
+                
+                // ВО ВРЕМЯ ТРЕНИРОВКИ НОГ (увеличенные дозы)
+                { time: "8:00", name: "EAA (дни ног)", dose: "15г", type: "amino", note: "Увеличенная доза для дней ног" },
+                { time: "8:00", name: "Глютамин (дни ног)", dose: "15г", type: "amino", note: "Увеличенная доза для дней ног" },
+                
+                // ПОСЛЕ ТРЕНИРОВКИ НОГ (увеличенные дозы)
+                { time: "9:30", name: "Мальтодекстрин (дни ног)", dose: "70г", type: "carb", note: "Увеличенная доза для дней ног" },
+                { time: "9:30", name: "Глютамин (после ног)", dose: "15г", type: "amino", note: "Увеличенная доза после тренировки ног" },
+                { time: "9:30", name: "Креатин дополнительный", dose: "+2г", type: "supplement", note: "Дополнительно к основной дозе в дни ног" }
+            ],
+            restDays: [
+                // ГОРМОН РОСТА В ДНИ ОТДЫХА
+                { time: "7:00", name: "Гормон роста", dose: "4ЕД", type: "pharma", note: "Натощак в дни отдыха" },
+                
+                // СХЕМА ПРИЕМА ОКСАНДРОЛОНА В ДНИ ОТДЫХА
+                { time: "7:30", name: "Оксандролон", dose: "20мг", type: "pharma", note: "С завтраком (дни отдыха)" },
+                { time: "10:30", name: "Сывороточный протеин", dose: "30г", type: "protein", note: "В дни отдыха" },
+                { time: "14:00", name: "Оксандролон", dose: "20мг", type: "pharma", note: "С обедом (дни отдыха)" },
+                { time: "22:30", name: "Оксандролон", dose: "10мг", type: "pharma", note: "Перед сном (дни отдыха)" }
+            ],
+            injectionDays: [
+                { time: "7:00", name: "Тестостерон энантат", dose: "250мг", type: "injection", note: "Утром, внутримышечно (ВТ, ПТ) = 500мг/нед" },
+                { time: "7:00", name: "Мастерон энантат", dose: "200мг", type: "injection", note: "Утром, внутримышечно (ВТ, ПТ) = 400мг/нед" }
+            ],
+            trenDays: [
+                { time: "7:00", name: "Тренболон ацетат", dose: "50мг", type: "injection", note: "СТРОГО в 7:00 утром! (через день с 07.06.25)" }
+            ],
+            antiestrogenDays: [
+                { time: "7:00", name: "Анастрозол", dose: "0,5мг", type: "pharma", note: "Через день (корректировать по анализам)" }
+            ],
+            liverAlternative: [
+                { time: "12:00", name: "ПЕЧЕНЬ ЗДОРОВАЯ", dose: "2 таблетки", type: "liver", note: "Перед обедом (если нет TUDCA)" },
+                { time: "22:00", name: "ПЕЧЕНЬ ЗДОРОВАЯ", dose: "1 таблетка", type: "liver", note: "На ночь (если нет TUDCA)" }
+            ],
+            additionalMagnesium: [
+                { time: "20:00", name: "Магний дополнительный", dose: "400мг", type: "mineral", note: "Если нужно дополнительно" }
+            ]
+        };
+
+        // Планы питания
+        const nutritionPlans = {
+            legDays: {
+                calories: 3400,
+                protein: 240,
+                fats: 115,
+                carbs: 370,
+                meals: [
+                    { time: "5:00", name: "Подъем + ГР", content: "Гормон роста 4ЕД натощак", calories: 0 },
+                    { time: "6:15", name: "Предтренировочный завтрак", content: "Овсянка 100г + Банан крупный + 6 белков + 2 цельных яйца", calories: 750 },
+                    { time: "9:00", name: "После тренировки", content: "Протеин 50г + Мальтодекстрин 70г", calories: 480 },
+                    { time: "11:00", name: "Второй завтрак", content: "Гречка 120г + Куриная грудка 180г + Салат", calories: 620 },
+                    { time: "14:00", name: "Обед", content: "Рис 100г + Говядина 180г + Овощи", calories: 580 },
+                    { time: "17:00", name: "Полдник", content: "Творог 250г + Орехи 25г + Мед 15г", calories: 450 },
+                    { time: "20:00", name: "Ужин", content: "Лосось 180г + Овощи + Авокадо 100г", calories: 480 },
+                    { time: "22:30", name: "Перед сном", content: "Казеин 40г", calories: 140 }
+                ]
+            },
+            workoutDays: {
+                calories: 3200,
+                protein: 230,
+                fats: 110,
+                carbs: 320,
+                meals: [
+                    { time: "5:00", name: "Подъем + ГР", content: "Гормон роста 4ЕД натощак", calories: 0 },
+                    { time: "6:15", name: "Завтрак", content: "Овсянка 80г + Банан + 6 белков + 2 яйца", calories: 650 },
+                    { time: "9:00", name: "После тренировки", content: "Протеин 40г + Мальтодекстрин 50г", calories: 360 },
+                    { time: "11:00", name: "Второй завтрак", content: "Гречка 100г + Куриная грудка 150г", calories: 520 },
+                    { time: "14:00", name: "Обед", content: "Рис 80г + Говядина 150г + Овощи", calories: 480 },
+                    { time: "17:00", name: "Полдник", content: "Творог 200г + Орехи 20г", calories: 350 },
+                    { time: "20:00", name: "Ужин", content: "Лосось 150г + Овощи", calories: 380 },
+                    { time: "22:30", name: "Перед сном", content: "Казеин 30г", calories: 120 }
+                ]
+            },
+            restDays: {
+                calories: 2900,
+                protein: 220,
+                fats: 105,
+                carbs: 280,
+                meals: [
+                    { time: "7:00", name: "Подъем + ГР", content: "Гормон роста 4ЕД натощак", calories: 0 },
+                    { time: "7:30", name: "Завтрак", content: "Овсянка 60г + 6 белков + 1 яйцо + Ягоды", calories: 480 },
+                    { time: "10:30", name: "Второй завтрак", content: "Творог 200г + Ягоды 100г", calories: 260 },
+                    { time: "13:30", name: "Обед", content: "Гречка 80г + Курица 150г + Салат", calories: 500 },
+                    { time: "16:30", name: "Полдник", content: "Протеин 30г + Орехи 20г", calories: 270 },
+                    { time: "19:30", name: "Ужин", content: "Рыба 150г + Овощи", calories: 380 },
+                    { time: "22:30", name: "Перед сном", content: "Казеин 30г", calories: 120 }
+                ]
+            }
+        };
+
+        // Хранилище данных
+        const appData = {
+            workouts: {},
+            supplements: {},
+            measurements: {},
+            weights: {},
+            photos: {},
+            health: {},
+            bloodwork: {},
+            pct: {},
+            analytics: {},
+            notifications: {
+                injections: true,
+                bloodwork: true,
+                sides: true,
+                measurements: true
+            },
+            settings: {
+                darkMode: false,
+                hideTakenSupplements: false
+            }
+        };
+
+        // Инициализация
+        document.addEventListener('DOMContentLoaded', function() {
+            try {
+                // Проверяем доступность localStorage и уведомляем пользователя
+                if (!storageAvailable) {
+                    showStorageWarning();
+                }
+                
+                loadSavedData();
+                const initialDate = new Date('2025-06-09');
+                updateUI(initialDate);
+                setupEventListeners();
+                
+            } catch (error) {
+                console.error('❌ Ошибка при инициализации:', error);
+                const container = document.querySelector('.container');
+                if (container) {
+                    const errorEl = document.createElement('div');
+                    errorEl.className = 'panel reminder-danger';
+                    errorEl.innerHTML = '❌ Ошибка загрузки приложения. Обновите страницу.';
+                    container.insertBefore(errorEl, container.firstChild);
+                }
+            }
+        });
+
+        function showStorageWarning() {
+            try {
+                const warningEl = document.createElement('div');
+                warningEl.className = 'panel reminder-warning';
+                warningEl.innerHTML = `
+                    ⚠️ <strong>Внимание:</strong> Данные будут сохраняться только в текущей сессии браузера. 
+                    Для постоянного сохранения откройте файл через веб-сервер или разместите на хостинге.
+                `;
+                warningEl.style.marginBottom = '15px';
+                
+                const container = document.querySelector('.container');
+                const firstPanel = container ? container.querySelector('.panel') : null;
+                if (firstPanel && container) {
+                    container.insertBefore(warningEl, firstPanel);
+                }
+            } catch (e) {
+                console.error('Ошибка при показе предупреждения:', e);
+            }
+        }
+
+        function setupEventListeners() {
+            try {
+                const currentDateEl = document.getElementById('current-date');
+                const prevDayBtn = document.getElementById('prev-day');
+                const nextDayBtn = document.getElementById('next-day');
+                
+                if (currentDateEl) {
+                    currentDateEl.addEventListener('change', function() {
+                        updateUI(new Date(this.value));
+                    });
+                }
+                
+                if (prevDayBtn) {
+                    prevDayBtn.addEventListener('click', function() {
+                        const current = new Date(currentDateEl.value);
+                        current.setDate(current.getDate() - 1);
+                        currentDateEl.valueAsDate = current;
+                        updateUI(current);
+                    });
+                }
+                
+                if (nextDayBtn) {
+                    nextDayBtn.addEventListener('click', function() {
+                        const current = new Date(currentDateEl.value);
+                        current.setDate(current.getDate() + 1);
+                        currentDateEl.valueAsDate = current;
+                        updateUI(current);
+                    });
+                }
+                
+                const saveWorkoutBtn = document.getElementById('save-workout');
+                const markAllTakenBtn = document.getElementById('mark-all-taken');
+                const saveMeasurementsBtn = document.getElementById('save-measurements');
+                const saveHealthBtn = document.getElementById('save-health-data');
+                const saveBloodworkBtn = document.getElementById('save-bloodwork');
+                const savePctBtn = document.getElementById('save-pct-data');
+                const calc1rmBtn = document.getElementById('calc-1rm');
+                const generateReportBtn = document.getElementById('generate-report');
+                const exportPdfBtn = document.getElementById('export-pdf');
+                const exportCsvBtn = document.getElementById('export-csv');
+                const exportBackupBtn = document.getElementById('export-backup');
+                const photoUploadCamera = document.getElementById('photo-upload-camera');
+                const photoUploadGallery = document.getElementById('photo-upload-gallery');
+                const themeSwitcher = document.getElementById('theme-switcher');
+                const hideTakenCheckbox = document.getElementById('hide-taken-checkbox');
+                
+                if (saveWorkoutBtn) saveWorkoutBtn.addEventListener('click', saveWorkoutData);
+                if (markAllTakenBtn) markAllTakenBtn.addEventListener('click', markAllSupplementsTaken);
+                if (saveMeasurementsBtn) saveMeasurementsBtn.addEventListener('click', saveMeasurements);
+                if (saveHealthBtn) saveHealthBtn.addEventListener('click', saveHealthData);
+                if (saveBloodworkBtn) saveBloodworkBtn.addEventListener('click', saveBloodworkData);
+                if (savePctBtn) savePctBtn.addEventListener('click', savePctData);
+                if (calc1rmBtn) calc1rmBtn.addEventListener('click', calculate1RM);
+                if (generateReportBtn) generateReportBtn.addEventListener('click', generateWeeklyReport);
+                if (exportPdfBtn) exportPdfBtn.addEventListener('click', exportToPDF);
+                if (exportCsvBtn) exportCsvBtn.addEventListener('click', exportToCSV);
+                if (exportBackupBtn) exportBackupBtn.addEventListener('click', exportBackup);
+                if (photoUploadCamera) photoUploadCamera.addEventListener('change', handlePhotoUpload);
+                if (photoUploadGallery) photoUploadGallery.addEventListener('change', handlePhotoUpload);
+                
+                if (themeSwitcher) {
+                    themeSwitcher.addEventListener('click', function() {
+                        toggleDarkMode(!appData.settings.darkMode);
+                    });
+                }
+                
+                if (hideTakenCheckbox) {
+                    hideTakenCheckbox.addEventListener('change', function() {
+                        appData.settings.hideTakenSupplements = this.checked;
+                        saveData();
+                        updateSupplementsPanel(new Date(currentDateEl.value));
+                    });
+                }
+                
+                document.querySelectorAll('.tab').forEach(tab => {
+                    tab.addEventListener('click', function() {
+                        document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+                        document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+                        this.classList.add('active');
+                        
+                        const targetTab = document.getElementById(`${this.getAttribute('data-tab')}-tab`);
+                        if (targetTab) {
+                            targetTab.classList.add('active');
+                        }
+                        
+                        if (this.getAttribute('data-tab') === 'photos') {
+                            updatePhotosPanel();
+                        } else if (this.getAttribute('data-tab') === 'nutrition') {
+                            updateNutritionPanel(new Date(currentDateEl.value));
+                        } else if (this.getAttribute('data-tab') === 'health') {
+                            updateHealthPanel(new Date(currentDateEl.value));
+                        } else if (this.getAttribute('data-tab') === 'bloodwork') {
+                            updateBloodworkPanel();
+                        } else if (this.getAttribute('data-tab') === 'pct') {
+                            updatePctPanel(new Date(currentDateEl.value));
+                        } else if (this.getAttribute('data-tab') === 'analytics') {
+                            updateAnalyticsPanel();
+                        } else if (this.getAttribute('data-tab') === 'tools') {
+                            updateToolsPanel();
+                        }
+                    });
+                });
+                
+                // Обработчики для слайдеров трекера здоровья
+                setupHealthSliders();
+            } catch (e) {
+                console.error('Ошибка при установке обработчиков событий:', e);
+            }
+        }
+        
+        function setupHealthSliders() {
+            const sliders = [
+                { id: 'sleep-quality', valueId: 'sleep-value' },
+                { id: 'night-sweats', valueId: 'sweats-value' },
+                { id: 'aggression', valueId: 'aggression-value' },
+                { id: 'shortness-breath', valueId: 'breath-value' },
+                { id: 'heartburn', valueId: 'heartburn-value' },
+                { id: 'libido', valueId: 'libido-value' },
+                { id: 'pct-sleep', valueId: 'pct-sleep-value' },
+                { id: 'pct-energy', valueId: 'pct-energy-value' },
+                { id: 'pct-libido', valueId: 'pct-libido-value' },
+                { id: 'rpe-scale', valueId: 'rpe-value' }
+            ];
+            
+            sliders.forEach(slider => {
+                const sliderEl = document.getElementById(slider.id);
+                const valueEl = document.getElementById(slider.valueId);
+                
+                if (sliderEl && valueEl) {
+                    sliderEl.addEventListener('input', function() {
+                        valueEl.textContent = this.value;
+                        if (slider.id === 'rpe-scale') {
+                            updateRPEDescription(this.value);
+                        }
+                    });
+                }
+            });
+            
+            // Обработчики уведомлений
+            ['notify-injections', 'notify-bloodwork', 'notify-sides', 'notify-measurements'].forEach(id => {
+                const checkbox = document.getElementById(id);
+                if (checkbox) {
+                    const key = id.replace('notify-', '');
+                    checkbox.checked = appData.notifications[key] || false;
+                    checkbox.addEventListener('change', function() {
+                        appData.notifications[key] = this.checked;
+                        saveData();
+                    });
+                }
+            });
+        }
+
+        function updateUI(date) {
+            try {
+                const dayOfWeek = date.getDay();
+                
+                updateProgramStats(date);
+                
+                const workoutTypeEl = document.getElementById('workout-type');
+                if (workoutTypeEl) {
+                    const workoutName = workoutData[getWorkoutType(dayOfWeek)].name;
+                    workoutTypeEl.textContent = `${getDayName(dayOfWeek)} - ${workoutName}`;
+                }
+                
+                updateWorkoutPanel(date);
+                updateSupplementsPanel(date);
+                updateMeasurementsPanel(date);
+                updateReminders(date);
+                
+                // Обновляем активные панели
+                const activeTab = document.querySelector('.tab.active');
+                if (activeTab) {
+                    const tabType = activeTab.getAttribute('data-tab');
+                    if (tabType === 'health') {
+                        updateHealthPanel(date);
+                    } else if (tabType === 'analytics') {
+                        updateAnalyticsPanel();
+                    } else if (tabType === 'tools') {
+                        updateToolsPanel();
+                    }
+                }
+                
+                const hideTakenCheckbox = document.getElementById('hide-taken-checkbox');
+                if (hideTakenCheckbox) {
+                    hideTakenCheckbox.checked = appData.settings.hideTakenSupplements;
+                }
+                
+            } catch (e) {
+                console.error('Ошибка обновления UI:', e);
+            }
+        }
+
+        function updateProgramStats(date) {
+            try {
+                const startDate = new Date('2025-06-09');
+                const diffTime = Math.abs(date - startDate);
+                const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)) + 1;
+                const weeksCount = Math.ceil(diffDays / 7);
+                
+                const weeksEl = document.getElementById('weeks-passed');
+                const daysEl = document.getElementById('days-passed');
+                
+                if (weeksEl) weeksEl.textContent = weeksCount;
+                if (daysEl) daysEl.textContent = diffDays;
+            } catch (e) {
+                console.error('Ошибка обновления статистики:', e);
+            }
+        }
+        
+        function getWorkoutType(dayOfWeek) {
+            const types = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
+            return types[dayOfWeek];
+        }
+        
+        function updateWorkoutPanel(date) {
+            try {
+                const workoutType = getWorkoutType(date.getDay());
+                const workout = workoutData[workoutType];
+                const container = document.getElementById('workout-exercises');
+                
+                if (!container) {
+                    console.error('Контейнер workout-exercises не найден!');
+                    return;
+                }
+                
+                container.innerHTML = '';
+                
+                if (workout.exercises.length === 0) {
+                    let content = '<div class="empty-state">День отдыха';
+                    if (workout.activities) {
+                        content += '<br><br>' + workout.activities.join('<br>');
+                    }
+                    content += '</div>';
+                    container.innerHTML = content;
+                    return;
+                }
+                
+                workout.exercises.forEach((ex, exIndex) => {
+                    const exEl = document.createElement('div');
+                    exEl.className = 'exercise';
+                    exEl.innerHTML = `<h3>${exIndex + 1}. ${ex.name} - ${ex.sets}×${ex.reps} (отдых ${ex.rest})</h3>`;
+                    
+                    if (ex.note) exEl.innerHTML += `<p><em>${ex.note}</em></p>`;
+                    
+                    const setsEl = document.createElement('div');
+                    for (let i = 0; i < ex.sets; i++) {
+                        const setEl = document.createElement('div');
+                        setEl.className = 'set';
+                        setEl.innerHTML = `
+                            <div class="set-number">Подход ${i + 1}</div>
+                            <input type="number" placeholder="кг" class="input-small weight-input" 
+                                   data-exercise="${exIndex}" data-set="${i}">
+                            <input type="number" placeholder="повт" class="input-small reps-input" 
+                                   data-exercise="${exIndex}" data-set="${i}">
+                        `;
+                        setsEl.appendChild(setEl);
+                    }
+                    
+                    exEl.appendChild(setsEl);
+                    container.appendChild(exEl);
+                });
+                
+                loadWorkoutData(date);
+            } catch (e) {
+                console.error('Ошибка при обновлении панели тренировок:', e);
+            }
+        }
+        
+        function updateSupplementsPanel(date) {
+            try {
+                const workoutType = getWorkoutType(date.getDay());
+                const dateKey = date.toISOString().split('T')[0];
+                const container = document.getElementById('supplements-list');
+                
+                if (!container) {
+                    console.error('Контейнер supplements-list не найден!');
+                    return;
+                }
+                
+                container.innerHTML = '';
+                
+                // Собираем добавки
+                let supplements = [...supplementData.everyday];
+                
+                // Добавляем специфичные для типа дня добавки
+                if (workoutType === 'wednesday' || workoutType === 'sunday') {
+                    // Дни отдыха - добавляем схему ГР и оксандролона для отдыха
+                    supplements.push(...supplementData.restDays);
+                } else {
+                    // Тренировочные дни - добавляем схему ГР и базовый предтренировочный комплекс
+                    supplements.push(...supplementData.workoutDays);
+                    
+                    // Усиленные добавки для дней ног (заменяют базовые предтренировочные)
+                    if (workoutType === 'monday' || workoutType === 'thursday') {
+                        // Убираем базовые предтренировочные добавки
+                        const preWorkoutToRemove = [
+                            'Цитруллин малат',
+                            'Аргинин', 
+                            'Бета-аланин',
+                            'Кофеин',
+                            'Таурин',
+                            'Мальтодекстрин',
+                            'EAA (во время тренировки)',
+                            'Глютамин (во время тренировки)',
+                            'Глютамин (после тренировки)'
+                        ];
+                        
+                        supplements = supplements.filter(item => 
+                            !preWorkoutToRemove.some(name => item.name.includes(name.split(' ')[0]))
+                        );
+                        
+                        // Добавляем усиленные версии для дней ног
+                        supplements.push(...supplementData.legDays);
+                    }
+                }
+                
+                // Инъекции тестостерона и мастерона по вторникам и пятницам
+                if (date.getDay() === 2 || date.getDay() === 5) {
+                    supplements.push(...supplementData.injectionDays);
+                }
+                
+                // Инъекции тренболона (каждые 2 дня, начиная с 07.06.2025)
+                const startTrenDate = new Date('2025-06-07');
+                const diffDays = Math.floor((date - startTrenDate) / (1000 * 60 * 60 * 24));
+                if (diffDays >= 0 && diffDays % 2 === 0) {
+                    supplements.push(...supplementData.trenDays);
+                }
+                
+                // Анастрозол через день (начиная с 09.06.2025)
+                const startAnastrozolDate = new Date('2025-06-09');
+                const anastrozolDiffDays = Math.floor((date - startAnastrozolDate) / (1000 * 60 * 60 * 24));
+                if (anastrozolDiffDays >= 0 && anastrozolDiffDays % 2 === 0) {
+                    supplements.push(...supplementData.antiestrogenDays);
+                }
+                
+                // Сортировка по времени
+                supplements.sort((a, b) => {
+                    const timeA = a.time.split(':').map(Number);
+                    const timeB = b.time.split(':').map(Number);
+                    return timeA[0] - timeB[0] || timeA[1] - timeB[1];
+                });
+                
+                if (supplements.length === 0) {
+                    container.innerHTML = '<div class="empty-state">Нет добавок на сегодня</div>';
+                    return;
+                }
+                
+                let hasVisibleSupplements = false;
+                
+                // Группируем добавки по времени для лучшей читаемости
+                const timeGroups = {};
+                supplements.forEach(item => {
+                    if (!timeGroups[item.time]) {
+                        timeGroups[item.time] = [];
+                    }
+                    timeGroups[item.time].push(item);
+                });
+                
+                // Отображаем по группам времени с правильной сортировкой
+                const sortedTimes = Object.keys(timeGroups).sort((a, b) => {
+                    const timeA = a.split(':').map(Number);
+                    const timeB = b.split(':').map(Number);
+                    return timeA[0] - timeB[0] || timeA[1] - timeB[1];
+                });
+                
+                sortedTimes.forEach(time => {
+                    // Добавляем заголовок времени, если в группе больше 3 добавок
+                    if (timeGroups[time].length > 3) {
+                        const timeHeader = document.createElement('h4');
+                        timeHeader.textContent = `${time} - ${getTimeLabel(time)}`;
+                        timeHeader.style.marginTop = '15px';
+                        timeHeader.style.marginBottom = '10px';
+                        timeHeader.style.color = 'var(--primary)';
+                        container.appendChild(timeHeader);
+                    }
+                    
+                    // Сортируем добавки внутри каждой временной группы по приоритету
+                    const sortedSupplements = timeGroups[time].sort((a, b) => {
+                        const priorityOrder = { pharma: 0, injection: 1, pump: 2, amino: 3, protein: 4, carb: 5, supplement: 6, liver: 7, joint: 8, health: 9, vitamin: 10, mineral: 11, sleep: 12 };
+                        return (priorityOrder[a.type] || 99) - (priorityOrder[b.type] || 99);
+                    });
+                    
+                    sortedSupplements.forEach(item => {
+                        const supplementKey = `${item.name}-${item.time}`;
+                        const isTaken = appData.supplements[dateKey] && appData.supplements[dateKey][supplementKey];
+                        
+                        if (appData.settings.hideTakenSupplements && isTaken) {
+                            return;
+                        }
+                        
+                        hasVisibleSupplements = true;
+                        
+                        const el = document.createElement('div');
+                        el.className = `supplement-item ${isTaken ? 'taken' : ''}`;
+                        el.innerHTML = `
+                            <div style="display: flex; align-items: center;">
+                                <div class="supplement-type type-${item.type}"></div>
+                                <div class="supplement-info">
+                                    <div><strong>${item.name}</strong> <span class="time-badge">${item.time}</span></div>
+                                    <div style="font-size: 13px; color: var(--text); opacity: 0.8;">${item.dose}</div>
+                                    ${item.note ? `<div class="supplement-note">${item.note}</div>` : ''}
+                                </div>
+                            </div>
+                            <label class="checkbox-container">
+                                <input type="checkbox" ${isTaken ? 'checked' : ''}>
+                                <span class="checkmark"></span>
+                            </label>
+                        `;
+                        
+                        el.querySelector('input').addEventListener('change', function() {
+                            if (!appData.supplements[dateKey]) appData.supplements[dateKey] = {};
+                            
+                            if (this.checked) {
+                                appData.supplements[dateKey][supplementKey] = true;
+                                if (appData.settings.hideTakenSupplements) {
+                                    el.style.display = 'none';
+                                } else {
+                                    el.classList.add('taken');
+                                }
+                            } else {
+                                delete appData.supplements[dateKey][supplementKey];
+                                el.classList.remove('taken');
+                            }
+                            
+                            saveData();
+                        });
+                        
+                        container.appendChild(el);
+                    });
+                });
+                
+                if (!hasVisibleSupplements && appData.settings.hideTakenSupplements) {
+                    container.innerHTML = '<div class="empty-state">Все добавки на сегодня приняты</div>';
+                }
+            } catch (e) {
+                console.error('Ошибка при обновлении панели добавок:', e);
+            }
+        }
+
+        function getTimeLabel(time) {
+            const labels = {
+                '5:00': 'Рано утром (ГР)',
+                '7:00': 'Утром/Предтреник',
+                '7:30': 'Утром (отдых)',
+                '8:00': 'Тренировка/Завтрак',
+                '9:30': 'После тренировки',
+                '10:30': 'Второй завтрак',
+                '12:00': 'Обед',
+                '14:00': 'После обеда',
+                '18:00': 'Ужин',
+                '20:00': 'Вечер',
+                '21:30': 'Подготовка ко сну',
+                '22:00': 'Перед сном',
+                '22:30': 'На ночь'
+            };
+            return labels[time] || '';
+        }
+
+        function updateNutritionPanel(date) {
+            const workoutType = getWorkoutType(date.getDay());
+            let nutritionPlan;
+            
+            if (workoutType === 'monday' || workoutType === 'thursday') {
+                nutritionPlan = nutritionPlans.legDays;
+            } else if (workoutType === 'wednesday' || workoutType === 'sunday') {
+                nutritionPlan = nutritionPlans.restDays;
+            } else {
+                nutritionPlan = nutritionPlans.workoutDays;
+            }
+            
+            // Обновляем КБЖУ
+            const caloriesBreakdown = document.getElementById('calories-breakdown');
+            caloriesBreakdown.innerHTML = `
+                <div class="macro-item">
+                    <div style="font-weight: bold; font-size: 1.2rem;">${nutritionPlan.calories}</div>
+                    <div style="font-size: 0.9rem;">ккал</div>
+                </div>
+                <div class="macro-item">
+                    <div style="font-weight: bold; color: var(--danger);">${nutritionPlan.protein}г</div>
+                    <div style="font-size: 0.9rem;">белки</div>
+                </div>
+                <div class="macro-item">
+                    <div style="font-weight: bold; color: var(--warning);">${nutritionPlan.fats}г</div>
+                    <div style="font-size: 0.9rem;">жиры</div>
+                </div>
+                <div class="macro-item">
+                    <div style="font-weight: bold; color: var(--secondary);">${nutritionPlan.carbs}г</div>
+                    <div style="font-size: 0.9rem;">углеводы</div>
+                </div>
+            `;
+            
+            // Обновляем план питания
+            const mealPlan = document.getElementById('meal-plan');
+            mealPlan.innerHTML = '<h3>Режим питания</h3>';
+            
+            nutritionPlan.meals.forEach(meal => {
+                const mealEl = document.createElement('div');
+                mealEl.className = 'exercise';
+                mealEl.innerHTML = `
+                    <h4>${meal.time} - ${meal.name}</h4>
+                    <p>${meal.content}</p>
+                    ${meal.calories > 0 ? `<p style="text-align: right; font-weight: bold; color: var(--primary);">${meal.calories} ккал</p>` : ''}
+                `;
+                mealPlan.appendChild(mealEl);
+            });
+        }
+        
+        function updateHealthPanel(date) {
+            const dateKey = date.toISOString().split('T')[0];
+            
+            // Загружаем сохраненные данные
+            if (appData.health[dateKey]) {
+                const healthData = appData.health[dateKey];
+                
+                document.getElementById('sleep-quality').value = healthData.sleepQuality || 5;
+                document.getElementById('sleep-value').textContent = healthData.sleepQuality || 5;
+                
+                document.getElementById('night-sweats').value = healthData.nightSweats || 1;
+                document.getElementById('sweats-value').textContent = healthData.nightSweats || 1;
+                
+                document.getElementById('aggression').value = healthData.aggression || 1;
+                document.getElementById('aggression-value').textContent = healthData.aggression || 1;
+                
+                document.getElementById('shortness-breath').value = healthData.shortnessBreath || 1;
+                document.getElementById('breath-value').textContent = healthData.shortnessBreath || 1;
+                
+                document.getElementById('heartburn').value = healthData.heartburn || 1;
+                document.getElementById('heartburn-value').textContent = healthData.heartburn || 1;
+                
+                document.getElementById('libido').value = healthData.libido || 5;
+                document.getElementById('libido-value').textContent = healthData.libido || 5;
+                
+                if (healthData.bloodPressureSys) document.getElementById('blood-pressure-sys').value = healthData.bloodPressureSys;
+                if (healthData.bloodPressureDia) document.getElementById('blood-pressure-dia').value = healthData.bloodPressureDia;
+                if (healthData.restingHR) document.getElementById('resting-hr').value = healthData.restingHR;
+                if (healthData.notes) document.getElementById('daily-notes').value = healthData.notes;
+            } else {
+                // Сброс к значениям по умолчанию
+                document.getElementById('sleep-quality').value = 5;
+                document.getElementById('sleep-value').textContent = 5;
+                document.getElementById('night-sweats').value = 1;
+                document.getElementById('sweats-value').textContent = 1;
+                document.getElementById('aggression').value = 1;
+                document.getElementById('aggression-value').textContent = 1;
+                document.getElementById('shortness-breath').value = 1;
+                document.getElementById('breath-value').textContent = 1;
+                document.getElementById('heartburn').value = 1;
+                document.getElementById('heartburn-value').textContent = 1;
+                document.getElementById('libido').value = 5;
+                document.getElementById('libido-value').textContent = 5;
+                
+                document.getElementById('blood-pressure-sys').value = '';
+                document.getElementById('blood-pressure-dia').value = '';
+                document.getElementById('resting-hr').value = '';
+                document.getElementById('daily-notes').value = '';
+            }
+            
+            updateHealthAlerts(date);
+            updateHealthTrends(date);
+        }
+        
+        function updateHealthAlerts(date) {
+            const dateKey = date.toISOString().split('T')[0];
+            const alertsContainer = document.getElementById('health-alerts');
+            alertsContainer.innerHTML = '';
+            
+            if (!appData.health[dateKey]) return;
+            
+            const healthData = appData.health[dateKey];
+            
+            // Проверяем критические показатели
+            if (healthData.sleepQuality <= 3) {
+                addHealthAlert('⚠️ Критически низкое качество сна! Рассмотрите увеличение дозы мелатонина или добавление других средств для сна.', 'danger');
+            }
+            
+            if (healthData.nightSweats >= 7) {
+                addHealthAlert('🚨 Сильная ночная потливость! Возможно, нужно снизить дозу тренболона или добавить поддерживающие препараты.', 'danger');
+            }
+            
+            if (healthData.aggression >= 7) {
+                addHealthAlert('😤 Высокий уровень агрессивности! Рассмотрите медитацию, снижение дозы или консультацию с врачом.', 'danger');
+            }
+            
+            if (healthData.shortnessBreath >= 6) {
+                addHealthAlert('🫁 Проблемы с дыханием! Обязательно проконсультируйтесь с врачом, возможно влияние тренболона на сердечно-сосудистую систему.', 'danger');
+            }
+            
+            if (healthData.bloodPressureSys && healthData.bloodPressureSys > 140) {
+                addHealthAlert('🩺 Повышенное систолическое давление! Увеличьте дозу телмисартана или обратитесь к врачу.', 'warning');
+            }
+            
+            if (healthData.bloodPressureDia && healthData.bloodPressureDia > 90) {
+                addHealthAlert('🩺 Повышенное диастолическое давление! Требуется коррекция антигипертензивной терапии.', 'warning');
+            }
+            
+            if (healthData.restingHR && healthData.restingHR > 90) {
+                addHealthAlert('❤️ Повышенная ЧСС покоя! Возможно влияние стимуляторов или стресса на сердце.', 'warning');
+            }
+            
+            function addHealthAlert(text, type) {
+                const alertEl = document.createElement('div');
+                alertEl.className = `health-alert ${type}`;
+                alertEl.innerHTML = text;
+                alertsContainer.appendChild(alertEl);
+            }
+        }
+        
+        function updateHealthTrends(date) {
+            const trendsContainer = document.getElementById('health-trends');
+            trendsContainer.innerHTML = '';
+            
+            const last7Days = [];
+            for (let i = 6; i >= 0; i--) {
+                const d = new Date(date);
+                d.setDate(d.getDate() - i);
+                const dateKey = d.toISOString().split('T')[0];
+                if (appData.health[dateKey]) {
+                    last7Days.push(appData.health[dateKey]);
+                }
+            }
+            
+            if (last7Days.length < 2) {
+                trendsContainer.innerHTML = '<div class="empty-state">Недостаточно данных для анализа трендов</div>';
+                return;
+            }
+            
+            const trends = [
+                { name: 'Качество сна', key: 'sleepQuality', emoji: '😴' },
+                { name: 'Ночная потливость', key: 'nightSweats', emoji: '💦' },
+                { name: 'Агрессивность', key: 'aggression', emoji: '😤' },
+                { name: 'Одышка', key: 'shortnessBreath', emoji: '🫁' }
+            ];
+            
+            trends.forEach(trend => {
+                const values = last7Days.map(d => d[trend.key]).filter(v => v !== undefined);
+                if (values.length >= 2) {
+                    const latest = values[values.length - 1];
+                    const previous = values[values.length - 2];
+                    const change = latest - previous;
+                    
+                    let arrow = '→';
+                    let trendClass = 'trend-stable';
+                    
+                    if (Math.abs(change) >= 1) {
+                        if ((trend.key === 'sleepQuality' && change > 0) || 
+                            (trend.key !== 'sleepQuality' && change < 0)) {
+                            arrow = '↗️';
+                            trendClass = 'trend-down'; // Хорошая тенденция - зеленый
+                        } else {
+                            arrow = '↘️';
+                            trendClass = 'trend-up'; // Плохая тенденция - красный
+                        }
+                    }
+                    
+                    const trendEl = document.createElement('div');
+                    trendEl.className = 'health-trend';
+                    trendEl.innerHTML = `
+                        <span>${trend.emoji} ${trend.name}</span>
+                        <span>
+                            <span class="trend-arrow ${trendClass}">${arrow}</span>
+                            <span>${latest}/10</span>
+                        </span>
+                    `;
+                    trendsContainer.appendChild(trendEl);
+                }
+            });
+        }
+        
+        function updateBloodworkPanel() {
+            const today = new Date();
+            const bloodworkDate = document.getElementById('bloodwork-date');
+            if (bloodworkDate) {
+                bloodworkDate.valueAsDate = today;
+            }
+            
+            updateBloodworkHistory();
+        }
+        
+        function updateBloodworkHistory() {
+            const historyContainer = document.getElementById('bloodwork-history');
+            if (!historyContainer) return;
+            
+            historyContainer.innerHTML = '';
+            
+            const dates = Object.keys(appData.bloodwork).sort((a, b) => new Date(b) - new Date(a));
+            
+            if (dates.length === 0) {
+                historyContainer.innerHTML = '<div class="empty-state">Нет данных анализов</div>';
+                return;
+            }
+            
+            dates.forEach(date => {
+                const data = appData.bloodwork[date];
+                const historyEl = document.createElement('div');
+                historyEl.className = 'panel';
+                historyEl.innerHTML = `
+                    <h4>📅 ${formatDate(new Date(date))}</h4>
+                    <div class="bloodwork-results">
+                        ${data.alt ? `<div><strong>АЛТ:</strong> ${data.alt}</div>` : ''}
+                        ${data.ast ? `<div><strong>АСТ:</strong> ${data.ast}</div>` : ''}
+                        ${data.testosterone ? `<div><strong>Тестостерон:</strong> ${data.testosterone}</div>` : ''}
+                        ${data.estradiol ? `<div><strong>Эстрадиол:</strong> ${data.estradiol}</div>` : ''}
+                        ${data.cholesterol ? `<div><strong>Холестерин:</strong> ${data.cholesterol}</div>` : ''}
+                    </div>
+                `;
+                historyContainer.appendChild(historyEl);
+            });
+        }
+        
+        function updatePctPanel(date) {
+            const dateKey = date.toISOString().split('T')[0];
+            
+            // Загружаем сохраненные данные ПКТ
+            if (appData.pct[dateKey]) {
+                const pctData = appData.pct[dateKey];
+                
+                if (document.getElementById('pct-clomid')) document.getElementById('pct-clomid').checked = pctData.clomid || false;
+                if (document.getElementById('pct-tamoxifen')) document.getElementById('pct-tamoxifen').checked = pctData.tamoxifen || false;
+                
+                if (document.getElementById('pct-sleep')) {
+                    document.getElementById('pct-sleep').value = pctData.sleep || 5;
+                    document.getElementById('pct-sleep-value').textContent = pctData.sleep || 5;
+                }
+                
+                if (document.getElementById('pct-energy')) {
+                    document.getElementById('pct-energy').value = pctData.energy || 5;
+                    document.getElementById('pct-energy-value').textContent = pctData.energy || 5;
+                }
+                
+                if (document.getElementById('pct-libido')) {
+                    document.getElementById('pct-libido').value = pctData.libido || 5;
+                    document.getElementById('pct-libido-value').textContent = pctData.libido || 5;
+                }
+            }
+        }
+        
+        function updateAnalyticsPanel() {
+            calculateAnalytics();
+            generateCharts();
+            calculateCorrelations();
+        }
+        
+        function calculateAnalytics() {
+            // Подсчет общей статистики
+            const workoutDates = Object.keys(appData.workouts);
+            const totalWorkouts = workoutDates.length;
+            
+            // Расчет общего объема
+            let totalVolume = 0;
+            workoutDates.forEach(date => {
+                const workout = appData.workouts[date];
+                workout.forEach(exercise => {
+                    exercise.sets.forEach(set => {
+                        const weight = parseFloat(set.weight) || 0;
+                        const reps = parseFloat(set.reps) || 0;
+                        totalVolume += weight * reps;
+                    });
+                });
+            });
+            
+            // Средний сон
+            const healthDates = Object.keys(appData.health);
+            let avgSleep = 0;
+            if (healthDates.length > 0) {
+                const totalSleep = healthDates.reduce((sum, date) => {
+                    return sum + (appData.health[date].sleepQuality || 0);
+                }, 0);
+                avgSleep = (totalSleep / healthDates.length).toFixed(1);
+            }
+            
+            // Изменение веса
+            const weightDates = Object.keys(appData.measurements).filter(date => appData.measurements[date].weight);
+            let weightChange = 0;
+            if (weightDates.length >= 2) {
+                const sortedDates = weightDates.sort();
+                const firstWeight = parseFloat(appData.measurements[sortedDates[0]].weight);
+                const lastWeight = parseFloat(appData.measurements[sortedDates[sortedDates.length - 1]].weight);
+                weightChange = (lastWeight - firstWeight).toFixed(1);
+            }
+            
+            // Обновляем интерфейс
+            if (document.getElementById('total-workouts')) document.getElementById('total-workouts').textContent = totalWorkouts;
+            if (document.getElementById('total-volume')) document.getElementById('total-volume').textContent = Math.round(totalVolume);
+            if (document.getElementById('avg-sleep')) document.getElementById('avg-sleep').textContent = avgSleep;
+            if (document.getElementById('weight-change')) document.getElementById('weight-change').textContent = `${weightChange > 0 ? '+' : ''}${weightChange}кг`;
+        }
+        
+        function generateCharts() {
+            // Заглушки для графиков (в реальном приложении здесь была бы библиотека графиков)
+            const charts = ['strength-chart', 'weight-chart', 'sleep-chart', 'measurements-chart'];
+            charts.forEach(chartId => {
+                const chartEl = document.getElementById(chartId);
+                if (chartEl) {
+                    chartEl.innerHTML = 'График будет отображен при достаточном количестве данных';
+                }
+            });
+        }
+        
+        function calculateCorrelations() {
+            // Упрощенный расчет корреляций
+            const sleepWorkoutCorr = document.getElementById('sleep-workout-corr');
+            const sidesProgressCorr = document.getElementById('sides-progress-corr');
+            const volumeResultCorr = document.getElementById('volume-result-corr');
+            
+            if (sleepWorkoutCorr) sleepWorkoutCorr.textContent = 'Данных недостаточно';
+            if (sidesProgressCorr) sidesProgressCorr.textContent = 'Данных недостаточно';
+            if (volumeResultCorr) volumeResultCorr.textContent = 'Данных недостаточно';
+        }
+        
+        function updateToolsPanel() {
+            // Инициализация инструментов
+            updateRPEDescription(5);
+            calculateCurrentVolume();
+        }
+        
+        function updateMeasurementsPanel(date) {
+            const dateKey = date.toISOString().split('T')[0];
+            document.getElementById('measurement-date').valueAsDate = date;
+            
+            if (appData.measurements[dateKey]) {
+                const m = appData.measurements[dateKey];
+                document.getElementById('weight').value = m.weight || '';
+                document.getElementById('chest').value = m.chest || '';
+                document.getElementById('waist').value = m.waist || '';
+                document.getElementById('biceps').value = m.biceps || '';
+                document.getElementById('thigh').value = m.thigh || '';
+                document.getElementById('calf').value = m.calf || '';
+            } else {
+                ['weight', 'chest', 'waist', 'biceps', 'thigh', 'calf'].forEach(field => {
+                    document.getElementById(field).value = '';
+                });
+            }
+            
+            updateMeasurementsHistory();
+        }
+        
+        function updateMeasurementsHistory() {
+            const tbody = document.querySelector('#measurements-history tbody');
+            tbody.innerHTML = '';
+            
+            const dates = Object.keys(appData.measurements).sort((a, b) => new Date(b) - new Date(a));
+            
+            dates.slice(0, 10).forEach(date => {
+                const m = appData.measurements[date];
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${formatDate(new Date(date))}</td>
+                    <td>${m.weight || '-'}</td>
+                    <td>${m.thigh || '-'}</td>
+                    <td>${m.calf || '-'}</td>
+                    <td>${m.waist || '-'}</td>
+                `;
+                tbody.appendChild(row);
+            });
+        }
+        
+        function updatePhotosPanel() {
+            const container = document.getElementById('photos-container');
+            container.innerHTML = '';
+            
+            const allPhotos = [];
+            Object.keys(appData.photos).forEach(date => {
+                appData.photos[date].forEach((photo, index) => {
+                    allPhotos.push({
+                        date: date,
+                        photo: photo,
+                        index: index
+                    });
+                });
+            });
+            
+            allPhotos.sort((a, b) => new Date(b.date) - new Date(a.date));
+            
+            if (allPhotos.length === 0) {
+                container.innerHTML = '<div class="empty-state">Нет добавленных фото</div>';
+                return;
+            }
+            
+            allPhotos.forEach(item => {
+                const photoEl = document.createElement('div');
+                photoEl.className = 'photo-item';
+                photoEl.innerHTML = `
+                    <img src="${item.photo}" alt="Фото прогресса">
+                    <div class="photo-date">${formatDate(new Date(item.date))}</div>
+                `;
+                container.appendChild(photoEl);
+            });
+        }
+        
+        function updateReminders(date) {
+            const container = document.getElementById('reminders-container');
+            container.innerHTML = '';
+            
+            const dateKey = date.toISOString().split('T')[0];
+            const dayOfWeek = date.getDay();
+            
+            // Критические уведомления на основе здоровья
+            checkCriticalHealthAlerts(date, container);
+            
+            // Напоминания об анализах крови
+            checkBloodworkReminders(date, container);
+            
+            if (!appData.weights[dateKey]) {
+                addReminder('⚖️ Взвеситься сегодня утром натощак', 'danger');
+            }
+            
+            // Напоминания о ГР
+            if (dayOfWeek === 3 || dayOfWeek === 0) { // Дни отдыха
+                addReminder('💉 ГР в 7:00 натощак (день отдыха)', 'info');
+            } else { // Тренировочные дни
+                addReminder('💉 ГР в 5:00 натощак (тренировочный день)', 'warning');
+            }
+            
+            if (dayOfWeek === 1 || dayOfWeek === 4) {
+                addReminder('🦵 Сегодня день ног! Подготовься к тяжелой тренировке', 'warning');
+                addReminder('💊 Усиленный предтренировочный комплекс: Цитруллин 10г, Аргинин 6г, Бета-аланин 4г, Кофеин 300мг, Таурин 3г + Глицерин 5г', 'info');
+                addReminder('🥤 Во время тренировки: EAA 15г + Глютамин 15г + Электролиты', 'info');
+                addReminder('⚡ После тренировки: Протеин 40-50г + Мальтодекстрин 70г + Глютамин 15г + Креатин +2г', 'info');
+                addReminder('💊 Оксандролон: 7:00 (20мг) → 14:00 (20мг) → 22:30 (10мг) = 50мг/день', 'warning');
+            } else if (dayOfWeek !== 3 && dayOfWeek !== 0) {
+                addReminder('💊 Предтренировочный комплекс: Цитруллин 8-10г, Аргинин 5-6г, Бета-аланин 3-4г, Кофеин 200-300мг, Таурин 2-3г', 'info');
+                addReminder('🥤 Во время тренировки: EAA 10-15г + Глютамин 10г + Электролиты', 'info');
+                addReminder('⚡ После тренировки: Протеин 40-50г + Мальтодекстрин 50г + Глютамин 10г', 'info');
+                addReminder('💊 Оксандролон: 7:00 (20мг) → 14:00 (20мг) → 22:30 (10мг) = 50мг/день', 'warning');
+            } else {
+                addReminder('💊 Оксандролон в дни отдыха: 7:30 (20мг) → 14:00 (20мг) → 22:30 (10мг) = 50мг/день', 'warning');
+            }
+            
+            if (dayOfWeek === 2 || dayOfWeek === 5) {
+                addReminder('💉 Сегодня инъекции: Тестостерон 250мг + Мастерон 200мг (500мг+400мг/неделю)', 'danger');
+            }
+            
+            // Тренболон каждые 2 дня с 07.06
+            const startTrenDate = new Date('2025-06-07');
+            const trenDiffDays = Math.floor((date - startTrenDate) / (1000 * 60 * 60 * 24));
+            if (trenDiffDays >= 0 && trenDiffDays % 2 === 0) {
+                addReminder('💉 Сегодня инъекция тренболона 50мг СТРОГО в 7:00! (через день)', 'danger');
+            }
+            
+            // Анастрозол через день с 09.06
+            const startAnastrozolDate = new Date('2025-06-09');
+            const anastrozolDiffDays = Math.floor((date - startAnastrozolDate) / (1000 * 60 * 60 * 24));
+            if (anastrozolDiffDays >= 0 && anastrozolDiffDays % 2 === 0) {
+                addReminder('💊 Сегодня анастрозол 0,5мг (корректировать по анализам)', 'warning');
+            }
+            
+            addReminder('🩺 Измерить АД утром (контроль тренболона)', 'info');
+            addReminder('😴 Комплекс для сна: Мелатонин 5-10мг + L-теанин 400мг + Магний 800мг + ГАМК 500-750мг + Глицин 1-2г', 'info');
+            addReminder('💧 Не забывать про воду: 500-750мл во время тренировки', 'info');
+            
+            // Фото каждые 2 недели для ног
+            const startDate = new Date('2025-06-09');
+            const totalDays = Math.floor((date - startDate) / (1000 * 60 * 60 * 24));
+            if (totalDays % 14 === 0) {
+                addReminder('📸 Сегодня фото ног: фронт, профиль, сзади', 'info');
+            }
+            
+            // Общие фото еженедельно (воскресенье)
+            if (dayOfWeek === 0) {
+                addReminder('📸 Сегодня общие фото: фронт, профиль, сзади', 'info');
+            }
+            
+            function addReminder(text, type) {
+                const el = document.createElement('div');
+                el.className = `panel reminder-${type}`;
+                el.innerHTML = text;
+                container.appendChild(el);
+            }
+        }
+        
+        function checkCriticalHealthAlerts(date, container) {
+            const dateKey = date.toISOString().split('T')[0];
+            const healthData = appData.health[dateKey];
+            
+            if (!healthData) return;
+            
+            // Критические предупреждения
+            if (healthData.sleepQuality <= 2) {
+                addCriticalAlert('🚨 КРИТИЧЕСКИ НИЗКОЕ КАЧЕСТВО СНА! Немедленно увеличьте дозу мелатонина до 10мг или обратитесь к врачу!', container);
+            }
+            
+            if (healthData.nightSweats >= 8) {
+                addCriticalAlert('🚨 ЭКСТРЕМАЛЬНАЯ ПОТЛИВОСТЬ! Рассмотрите экстренное снижение дозы тренболона!', container);
+            }
+            
+            if (healthData.aggression >= 8) {
+                addCriticalAlert('🚨 ОПАСНЫЙ УРОВЕНЬ АГРЕССИИ! Немедленно снизьте дозу тренболона или прекратите курс!', container);
+            }
+            
+            if (healthData.shortnessBreath >= 7) {
+                addCriticalAlert('🚨 СЕРЬЕЗНЫЕ ПРОБЛЕМЫ С ДЫХАНИЕМ! НЕМЕДЛЕННО К ВРАЧУ! Возможно поражение сердечно-сосудистой системы!', container);
+            }
+            
+            if (healthData.bloodPressureSys && healthData.bloodPressureSys > 160) {
+                addCriticalAlert('🚨 КРИТИЧЕСКОЕ ПОВЫШЕНИЕ ДАВЛЕНИЯ! Удвойте дозу телмисартана и обратитесь к врачу!', container);
+            }
+            
+            if (healthData.restingHR && healthData.restingHR > 100) {
+                addCriticalAlert('🚨 ОПАСНО ВЫСОКИЙ ПУЛЬС! Исключите стимуляторы и обратитесь к кардиологу!', container);
+            }
+            
+            function addCriticalAlert(text, container) {
+                const el = document.createElement('div');
+                el.className = 'panel reminder-danger';
+                el.style.border = '3px solid var(--danger)';
+                el.style.animation = 'pulse 2s infinite';
+                el.innerHTML = text;
+                container.appendChild(el);
+            }
+        }
+        
+        function checkBloodworkReminders(date, container) {
+            const currentWeek = Math.floor((date - new Date('2025-06-09')) / (1000 * 60 * 60 * 24 * 7)) + 1;
+            
+            // Напоминания о сдаче анализов
+            if (currentWeek === 4 && !hasRecentBloodwork(date, 7)) {
+                addBloodworkAlert('🩺 ВРЕМЯ СДАВАТЬ АНАЛИЗЫ! 4-я неделя курса - контрольные показатели печени и гормонов!', container);
+            } else if (currentWeek === 8 && !hasRecentBloodwork(date, 7)) {
+                addBloodworkAlert('🩺 ОБЯЗАТЕЛЬНЫЕ АНАЛИЗЫ! 8-я неделя - критический контроль всех показателей!', container);
+            } else if (currentWeek === 12 && !hasRecentBloodwork(date, 7)) {
+                addBloodworkAlert('🩺 ФИНАЛЬНЫЕ АНАЛИЗЫ! 12-я неделя - подготовка к ПКТ!', container);
+            }
+            
+            function hasRecentBloodwork(date, days) {
+                for (let i = 0; i < days; i++) {
+                    const checkDate = new Date(date);
+                    checkDate.setDate(checkDate.getDate() - i);
+                    const dateKey = checkDate.toISOString().split('T')[0];
+                    if (appData.bloodwork[dateKey]) return true;
+                }
+                return false;
+            }
+            
+            function addBloodworkAlert(text, container) {
+                const el = document.createElement('div');
+                el.className = 'panel reminder-warning';
+                el.style.border = '2px solid var(--warning)';
+                el.innerHTML = text;
+                container.appendChild(el);
+            }
+        }
+        
+        // Функции сохранения и загрузки
+        function loadWorkoutData(date) {
+            const dateKey = date.toISOString().split('T')[0];
+            if (!appData.workouts[dateKey]) return;
+            
+            appData.workouts[dateKey].forEach(exerciseData => {
+                exerciseData.sets.forEach((set, setIndex) => {
+                    const weightInput = document.querySelector(`.weight-input[data-exercise="${exerciseData.exerciseIndex}"][data-set="${setIndex}"]`);
+                    const repsInput = document.querySelector(`.reps-input[data-exercise="${exerciseData.exerciseIndex}"][data-set="${setIndex}"]`);
+                    
+                    if (weightInput) weightInput.value = set.weight || '';
+                    if (repsInput) repsInput.value = set.reps || '';
+                });
+            });
+        }
+        
+        function saveWorkoutData() {
+            const date = new Date(document.getElementById('current-date').value);
+            const dateKey = date.toISOString().split('T')[0];
+            const workoutType = getWorkoutType(date.getDay());
+            const workout = workoutData[workoutType];
+            
+            if (workout.exercises.length === 0) return;
+            
+            const workoutDataToSave = [];
+            
+            workout.exercises.forEach((ex, exIndex) => {
+                const exerciseData = {
+                    exerciseIndex: exIndex,
+                    name: ex.name,
+                    sets: []
+                };
+                
+                for (let i = 0; i < ex.sets; i++) {
+                    const weightInput = document.querySelector(`.weight-input[data-exercise="${exIndex}"][data-set="${i}"]`);
+                    const repsInput = document.querySelector(`.reps-input[data-exercise="${exIndex}"][data-set="${i}"]`);
+                    
+                    exerciseData.sets.push({
+                        weight: weightInput ? weightInput.value : '',
+                        reps: repsInput ? repsInput.value : ''
+                    });
+                }
+                
+                workoutDataToSave.push(exerciseData);
+            });
+            
+            appData.workouts[dateKey] = workoutDataToSave;
+            saveData();
+            
+            alert('Тренировка сохранена!');
+        }
+        
+        function markAllSupplementsTaken() {
+            const date = new Date(document.getElementById('current-date').value);
+            const dateKey = date.toISOString().split('T')[0];
+            
+            if (!appData.supplements[dateKey]) appData.supplements[dateKey] = {};
+            
+            document.querySelectorAll('#supplements-list input[type="checkbox"]').forEach(checkbox => {
+                if (!checkbox.checked) {
+                    checkbox.checked = true;
+                    const supplementName = checkbox.closest('.supplement-item').querySelector('strong').textContent;
+                    const time = checkbox.closest('.supplement-item').querySelector('.time-badge').textContent;
+                    appData.supplements[dateKey][`${supplementName}-${time}`] = true;
+                }
+            });
+            
+            saveData();
+            updateSupplementsPanel(date);
+            alert('Все добавки отмечены как принятые!');
+        }
+        
+        function saveMeasurements() {
+            const date = new Date(document.getElementById('measurement-date').value);
+            const dateKey = date.toISOString().split('T')[0];
+            
+            appData.measurements[dateKey] = {
+                weight: document.getElementById('weight').value,
+                chest: document.getElementById('chest').value,
+                waist: document.getElementById('waist').value,
+                biceps: document.getElementById('biceps').value,
+                thigh: document.getElementById('thigh').value,
+                calf: document.getElementById('calf').value,
+                date: dateKey
+            };
+            
+            if (document.getElementById('weight').value) {
+                appData.weights[dateKey] = true;
+            }
+            
+            saveData();
+            updateMeasurementsHistory();
+            alert('Замеры сохранены!');
+        }
+        
+        function saveHealthData() {
+            const date = new Date(document.getElementById('current-date').value);
+            const dateKey = date.toISOString().split('T')[0];
+            
+            appData.health[dateKey] = {
+                sleepQuality: parseInt(document.getElementById('sleep-quality').value),
+                nightSweats: parseInt(document.getElementById('night-sweats').value),
+                aggression: parseInt(document.getElementById('aggression').value),
+                shortnessBreath: parseInt(document.getElementById('shortness-breath').value),
+                heartburn: parseInt(document.getElementById('heartburn').value),
+                libido: parseInt(document.getElementById('libido').value),
+                bloodPressureSys: document.getElementById('blood-pressure-sys').value || null,
+                bloodPressureDia: document.getElementById('blood-pressure-dia').value || null,
+                restingHR: document.getElementById('resting-hr').value || null,
+                notes: document.getElementById('daily-notes').value || null,
+                date: dateKey
+            };
+            
+            saveData();
+            updateHealthAlerts(date);
+            updateHealthTrends(date);
+            alert('Данные о здоровье сохранены!');
+        }
+        
+        function saveBloodworkData() {
+            const date = new Date(document.getElementById('bloodwork-date').value);
+            const dateKey = date.toISOString().split('T')[0];
+            
+            const bloodworkData = {
+                alt: document.getElementById('alt').value || null,
+                ast: document.getElementById('ast').value || null,
+                bilirubin: document.getElementById('bilirubin').value || null,
+                testosterone: document.getElementById('testosterone').value || null,
+                estradiol: document.getElementById('estradiol').value || null,
+                lh: document.getElementById('lh').value || null,
+                cholesterol: document.getElementById('cholesterol').value || null,
+                hdl: document.getElementById('hdl').value || null,
+                ldl: document.getElementById('ldl').value || null,
+                date: dateKey
+            };
+            
+            // Сохраняем только если есть хотя бы одно значение
+            const hasData = Object.values(bloodworkData).some(value => value !== null && value !== dateKey);
+            
+            if (hasData) {
+                appData.bloodwork[dateKey] = bloodworkData;
+                saveData();
+                updateBloodworkHistory();
+                alert('Результаты анализов сохранены!');
+                
+                // Очищаем форму
+                ['alt', 'ast', 'bilirubin', 'testosterone', 'estradiol', 'lh', 'cholesterol', 'hdl', 'ldl'].forEach(id => {
+                    const el = document.getElementById(id);
+                    if (el) el.value = '';
+                });
+            } else {
+                alert('Введите хотя бы один показатель анализов!');
+            }
+        }
+        
+        function savePctData() {
+            const currentDate = document.getElementById('current-date').value;
+            
+            appData.pct[currentDate] = {
+                clomid: document.getElementById('pct-clomid').checked,
+                tamoxifen: document.getElementById('pct-tamoxifen').checked,
+                sleep: parseInt(document.getElementById('pct-sleep').value),
+                energy: parseInt(document.getElementById('pct-energy').value),
+                libido: parseInt(document.getElementById('pct-libido').value),
+                date: currentDate
+            };
+            
+            saveData();
+            alert('Данные ПКТ сохранены!');
+        }
+        
+        function calculate1RM() {
+            const weight = parseFloat(document.getElementById('weight-lifted').value);
+            const reps = parseInt(document.getElementById('reps-performed').value);
+            
+            if (!weight || !reps || reps < 1 || reps > 15) {
+                alert('Введите корректные значения (вес > 0, повторения 1-15)');
+                return;
+            }
+            
+            // Формула Brzycki: 1RM = weight / (1.0278 - 0.0278 × reps)
+            const brzycki = weight / (1.0278 - 0.0278 * reps);
+            
+            // Формула Epley: 1RM = weight × (1 + reps/30)
+            const epley = weight * (1 + reps / 30);
+            
+            document.getElementById('brzycki-result').textContent = brzycki.toFixed(1);
+            document.getElementById('epley-result').textContent = epley.toFixed(1);
+        }
+        
+        function updateRPEDescription(value) {
+            const descriptions = {
+                1: 'Очень легко - без усилий',
+                2: 'Легко - минимальные усилия', 
+                3: 'Легко - небольшие усилия',
+                4: 'Умеренно легко',
+                5: 'Умеренно',
+                6: 'Умеренно тяжело',
+                7: 'Тяжело - можете сделать еще 3 повтора',
+                8: 'Очень тяжело - можете сделать еще 2 повтора',
+                9: 'Крайне тяжело - можете сделать еще 1 повтор',
+                10: 'Максимальные усилия - отказ'
+            };
+            
+            const descEl = document.getElementById('rpe-desc');
+            if (descEl) {
+                descEl.textContent = descriptions[value] || 'Неизвестно';
+            }
+        }
+        
+        function calculateCurrentVolume() {
+            const volumeEl = document.getElementById('current-volume');
+            if (!volumeEl) return;
+            
+            const currentDate = document.getElementById('current-date').value;
+            if (!appData.workouts[currentDate]) {
+                volumeEl.innerHTML = 'Нет данных тренировки для выбранного дня';
+                return;
+            }
+            
+            const workout = appData.workouts[currentDate];
+            let totalVolume = 0;
+            let exerciseCount = 0;
+            
+            workout.forEach(exercise => {
+                let exerciseVolume = 0;
+                exercise.sets.forEach(set => {
+                    const weight = parseFloat(set.weight) || 0;
+                    const reps = parseFloat(set.reps) || 0;
+                    exerciseVolume += weight * reps;
+                });
+                totalVolume += exerciseVolume;
+                if (exerciseVolume > 0) exerciseCount++;
+            });
+            
+            volumeEl.innerHTML = `
+                <strong>Объем тренировки:</strong><br>
+                📊 Общий объем: ${totalVolume.toFixed(0)} кг<br>
+                💪 Упражнений: ${exerciseCount}<br>
+                📈 Средний объем на упражнение: ${exerciseCount > 0 ? (totalVolume / exerciseCount).toFixed(0) : 0} кг
+            `;
+        }
+        
+        function generateWeeklyReport() {
+            const reportEl = document.getElementById('weekly-report');
+            if (!reportEl) return;
+            
+            const currentDate = new Date(document.getElementById('current-date').value);
+            const weekStart = new Date(currentDate);
+            weekStart.setDate(weekStart.getDate() - 6);
+            
+            const report = {
+                workouts: 0,
+                totalVolume: 0,
+                avgSleep: 0,
+                avgSides: 0,
+                improvements: [],
+                concerns: []
+            };
+            
+            // Анализ недели
+            for (let i = 0; i < 7; i++) {
+                const date = new Date(weekStart);
+                date.setDate(date.getDate() + i);
+                const dateKey = date.toISOString().split('T')[0];
+                
+                if (appData.workouts[dateKey]) {
+                    report.workouts++;
+                    // Подсчет объема...
+                }
+                
+                if (appData.health[dateKey]) {
+                    report.avgSleep += appData.health[dateKey].sleepQuality || 0;
+                    report.avgSides += (appData.health[dateKey].nightSweats || 0) + 
+                                      (appData.health[dateKey].aggression || 0);
+                }
+            }
+            
+            report.avgSleep = report.workouts > 0 ? (report.avgSleep / 7).toFixed(1) : 0;
+            report.avgSides = report.workouts > 0 ? (report.avgSides / 14).toFixed(1) : 0;
+            
+            // Формирование отчета
+            reportEl.innerHTML = `
+                <div class="panel">
+                    <h4>📝 Отчет за неделю (${formatDate(weekStart)} - ${formatDate(currentDate)})</h4>
+                    <div class="weekly-stats">
+                        <div><strong>💪 Тренировок:</strong> ${report.workouts}/3-4</div>
+                        <div><strong>😴 Средний сон:</strong> ${report.avgSleep}/10</div>
+                        <div><strong>⚠️ Побочные эффекты:</strong> ${report.avgSides}/10</div>
+                    </div>
+                    <div class="recommendations">
+                        <h5>💡 Рекомендации:</h5>
+                        ${report.avgSleep < 6 ? '<div>• Увеличить дозу препаратов для сна</div>' : ''}
+                        ${report.avgSides > 5 ? '<div>• Рассмотреть снижение дозы тренболона</div>' : ''}
+                        ${report.workouts < 3 ? '<div>• Увеличить частоту тренировок</div>' : ''}
+                    </div>
+                </div>
+            `;
+        }
+        
+        function exportToPDF() {
+            alert('Функция экспорта в PDF будет добавлена в следующей версии.\n\nПока вы можете использовать функцию печати браузера (Ctrl+P) для сохранения в PDF.');
+        }
+        
+        function exportToCSV() {
+            try {
+                let csvContent = 'data:text/csv;charset=utf-8,';
+                
+                // Экспорт замеров
+                csvContent += 'Дата,Вес,Грудь,Талия,Бицепс,Бедро,Голень\n';
+                Object.keys(appData.measurements).forEach(date => {
+                    const m = appData.measurements[date];
+                    csvContent += `${date},${m.weight || ''},${m.chest || ''},${m.waist || ''},${m.biceps || ''},${m.thigh || ''},${m.calf || ''}\n`;
+                });
+                
+                csvContent += '\n\nДата,Сон,Потливость,Агрессия,Одышка,Изжога,Либидо,АД_сист,АД_диаст,ЧСС\n';
+                Object.keys(appData.health).forEach(date => {
+                    const h = appData.health[date];
+                    csvContent += `${date},${h.sleepQuality || ''},${h.nightSweats || ''},${h.aggression || ''},${h.shortnessBreath || ''},${h.heartburn || ''},${h.libido || ''},${h.bloodPressureSys || ''},${h.bloodPressureDia || ''},${h.restingHR || ''}\n`;
+                });
+                
+                const encodedUri = encodeURI(csvContent);
+                const link = document.createElement('a');
+                link.setAttribute('href', encodedUri);
+                link.setAttribute('download', `leg_program_data_${new Date().toISOString().split('T')[0]}.csv`);
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                
+                alert('CSV файл загружен!');
+            } catch (error) {
+                console.error('Ошибка экспорта CSV:', error);
+                alert('Ошибка при экспорте данных');
+            }
+        }
+        
+        function exportBackup() {
+            try {
+                const backup = {
+                    exportDate: new Date().toISOString(),
+                    data: appData,
+                    version: '1.0'
+                };
+                
+                const dataStr = JSON.stringify(backup, null, 2);
+                const dataBlob = new Blob([dataStr], {type: 'application/json'});
+                
+                const link = document.createElement('a');
+                link.href = URL.createObjectURL(dataBlob);
+                link.download = `leg_program_backup_${new Date().toISOString().split('T')[0]}.json`;
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                
+                alert('Резервная копия создана!\n\nСохраните файл в надежном месте.');
+            } catch (error) {
+                console.error('Ошибка создания бэкапа:', error);
+                alert('Ошибка при создании резервной копии');
+            }
+        }
+
+        function handlePhotoUpload(e) {
+            try {
+                if (!window.FileReader) {
+                    alert('Ваш браузер не поддерживает загрузку файлов');
+                    return;
+                }
+                
+                if (e.target.files && e.target.files[0]) {
+                    const file = e.target.files[0];
+                    
+                    // Проверяем тип файла
+                    if (!file.type.startsWith('image/')) {
+                        alert('Пожалуйста, выберите изображение');
+                        return;
+                    }
+                    
+                    const reader = new FileReader();
+                    
+                    reader.onload = function(event) {
+                        try {
+                            const currentDateEl = document.getElementById('current-date');
+                            const dateKey = currentDateEl ? currentDateEl.value : new Date().toISOString().split('T')[0];
+                            
+                            if (!appData.photos[dateKey]) {
+                                appData.photos[dateKey] = [];
+                            }
+                            
+                            appData.photos[dateKey].push(event.target.result);
+                            saveData();
+                            updatePhotosPanel();
+                        } catch (err) {
+                            console.error('Ошибка при сохранении фото:', err);
+                            alert('Ошибка при сохранении фото');
+                        }
+                    };
+                    
+                    reader.onerror = function() {
+                        alert('Ошибка при чтении файла');
+                    };
+                    
+                    reader.readAsDataURL(file);
+                }
+            } catch (e) {
+                console.error('Ошибка загрузки фото:', e);
+                alert('Произошла ошибка при загрузке фото');
+            }
+        }
+
+        function toggleDarkMode(enable) {
+            appData.settings.darkMode = enable;
+            if (enable) {
+                document.documentElement.classList.add('dark-mode');
+            } else {
+                document.documentElement.classList.remove('dark-mode');
+            }
+            saveData();
+        }
+        
+        // Проверка доступности localStorage
+        function isLocalStorageAvailable() {
+            try {
+                const test = '__localStorage_test__';
+                localStorage.setItem(test, test);
+                localStorage.removeItem(test);
+                return true;
+            } catch (e) {
+                return false;
+            }
+        }
+
+        const storageAvailable = isLocalStorageAvailable();
+        let memoryStorage = {}; // Fallback хранилище в памяти
+
+        function saveData() {
+            try {
+                const dataToSave = JSON.stringify(appData);
+                if (storageAvailable) {
+                    localStorage.setItem('legProgramData', dataToSave);
+                } else {
+                    memoryStorage.legProgramData = dataToSave;
+                }
+            } catch (e) {
+                // Fallback к памяти при ошибке
+                memoryStorage.legProgramData = JSON.stringify(appData);
+            }
+        }
+        
+        function loadSavedData() {
+            try {
+                let saved = null;
+                
+                if (storageAvailable) {
+                    saved = localStorage.getItem('legProgramData');
+                } else {
+                    saved = memoryStorage.legProgramData;
+                }
+                
+                if (saved) {
+                    Object.assign(appData, JSON.parse(saved));
+                    
+                    if (appData.settings.darkMode) {
+                        toggleDarkMode(true);
+                    }
+                }
+            } catch (e) {
+                // Используем значения по умолчанию при ошибке
+            }
+        }
+        
+        function formatDate(date) {
+            const options = { weekday: 'long', day: 'numeric', month: 'long' };
+            return date.toLocaleDateString('ru-RU', options);
+        }
+        
+        function getDayName(dayOfWeek) {
+            const days = ['Воскресенье', 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота'];
+            return days[dayOfWeek];
+        }
+    </script>
+</body>
+</html>
